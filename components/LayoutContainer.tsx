@@ -3,9 +3,6 @@ import type { ReactNode } from "react";
 /** 70px vertical section padding (top + bottom). */
 export const SECTION_PADDING_Y = "py-[70px]";
 
-/** Hero: minimal top (below fixed header), 70px bottom. */
-export const HERO_SECTION_PADDING = "pb-8 pt-5 sm:pb-10 sm:pt-6 md:pb-12 md:pt-8 lg:pb-16";
-
 type LayoutContainerProps = {
   children: ReactNode;
   className?: string;
