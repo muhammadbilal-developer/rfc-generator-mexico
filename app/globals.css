@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #111827;
+  --color-secondary: #10b981;
+  --color-button: #059669;
+  --color-hover: #047857;
+  --color-accent: #8b5cf6;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+
+  --color-page: #f4f4f5;
+  --color-surface: #ffffff;
+  --color-muted: #f9fafb;
+
+  --color-accent-purple: #8b5cf6;
+  --color-accent-orange: #f97316;
+  --color-accent-blue: #3b82f6;
+  --color-accent-green: #22c55e;
+
+  --color-section-dark: #111827;
+  --color-section-light: #f4f4f5;
+  --color-section-green: #ffffff;
+  --color-section-footer: #ffffff;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --spacing-section-y: 70px;
+  --header-offset: 5rem;
+
+  --color-section-mint: #ecfdf5;
+  --color-section-sky: #f0fdf4;
+  --color-section-pearl: #ffffff;
+  --color-section-fog: #f4f4f5;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (min-width: 768px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --header-offset: 5.5rem;
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-primary);
+  background: var(--color-page);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Header / footer emerald gradient */
+.chrome-gradient {
+  font-family: var(--font-inter), var(--font-sans);
+  background: linear-gradient(135deg, #047857 0%, #059669 42%, #10b981 100%);
+}
+
+/* Fixed header — do not use position:relative on .chrome-gradient (it breaks fixed) */
+.site-header.chrome-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.site-footer.chrome-gradient {
+  position: relative;
+}
+
+.chrome-gradient a,
+.chrome-gradient button,
+.chrome-gradient p,
+.chrome-gradient h3,
+.chrome-gradient span {
+  font-family: inherit;
+}
+
+.site-header.chrome-gradient nav a {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+@media (min-width: 1024px) {
+  .site-header.chrome-gradient nav a {
+    letter-spacing: 0.04em;
+  }
+}
+
+.chrome-gradient::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    transparent 38%,
+    rgba(0, 0, 0, 0.06) 100%
+  );
+}
+
+.site-header,
+.site-footer {
+  isolation: isolate;
+}
+
+/* Hide header Try Free below 768px (wins over button inline-flex) */
+@media (max-width: 767.98px) {
+  .header-cta-desktop {
+    display: none !important;
+  }
+}
+
+/* Alternating light section backgrounds */
+.bg-section-mint {
+  background-color: var(--color-section-mint);
+}
+
+.bg-section-sky {
+  background-color: var(--color-section-sky);
+}
+
+.bg-section-pearl {
+  background-color: var(--color-section-pearl);
+}
+
+.bg-section-fog {
+  background-color: var(--color-section-fog);
+}
+
+/* Full-width legal / content pages (1440px layout) */
+.legal-prose {
+  width: 100%;
+  max-width: 100%;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.legal-prose p,
+.legal-prose li,
+.legal-prose h1,
+.legal-prose h2,
+.legal-prose h3,
+.legal-prose ul,
+.legal-prose ol {
+  max-width: 100%;
+  width: 100%;
+}
+
+.legal-prose h1,
+.legal-prose h2,
+.legal-prose h3 {
+  text-align: left;
 }
