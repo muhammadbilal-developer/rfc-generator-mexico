@@ -10,20 +10,22 @@ type HashLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
   children: ReactNode;
 };
 
+const pagesWithSections = ["/", "/consultar-rfc", "/rfc-con-homoclave"];
+
 /**
- * Homepage section link — avoids stacked hashes like /#faq#tool.
+ * In-page section link — avoids stacked hashes like /#faq#tool.
  */
 export function HashLink({ sectionId, children, onClick, ...props }: HashLinkProps) {
   const pathname = usePathname();
-  const onHome = pathname === "/";
-  const href = onHome ? `#${sectionId}` : `/#${sectionId}`;
+  const onSamePage = pagesWithSections.includes(pathname);
+  const href = onSamePage ? `#${sectionId}` : `/#${sectionId}`;
 
   return (
     <Link
       href={href}
       {...props}
       onClick={(e) => {
-        if (onHome) {
+        if (onSamePage) {
           e.preventDefault();
           scrollToSection(sectionId);
           setHash(sectionId, true);

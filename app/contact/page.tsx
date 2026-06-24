@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { LayoutContainer, SECTION_PADDING_Y } from "@/components/LayoutContainer";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Us",
   description: "Contact RFC Generator Mexico support for technical, legal, or business questions.",
 };
 

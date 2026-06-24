@@ -4,18 +4,18 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import { AnimatedReveal } from "./AnimatedReveal";
-import { SectionShell } from "./LayoutContainer";
+import { rfcConHomoclaveFaqItems } from "@/lib/rfcConHomoclaveFaq";
+import { AnimatedReveal } from "../AnimatedReveal";
+import { SectionShell } from "../LayoutContainer";
 
-const FAQ_IMAGE = "/images/home/faq-rfc.webp";
+const FAQ_IMAGE = "/images/rfc-con-homoclave/faq.webp";
 
-import { faqItems } from "@/lib/faqContent";
 function FaqIllustration() {
   return (
     <>
       <Image
         src={FAQ_IMAGE}
-        alt="Preguntas frecuentes sobre la calculadora RFC"
+        alt="Preguntas frecuentes sobre RFC con homoclave"
         fill
         sizes="(max-width: 768px) 0px, 50vw"
         className="object-cover object-center"
@@ -25,7 +25,7 @@ function FaqIllustration() {
   );
 }
 
-export function Faq() {
+export function RfcConHomoclaveFaq() {
   const [active, setActive] = useState<number>(0);
   const reduce = useReducedMotion();
 
@@ -33,7 +33,7 @@ export function Faq() {
     <SectionShell id="faq" className="bg-section-sky">
       <AnimatedReveal className="text-center lg:text-left">
         <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-text-primary md:text-4xl lg:mx-0">
-          Preguntas Frecuentes Sobre Calculadora RFC
+          Preguntas Frecuentes
         </h2>
       </AnimatedReveal>
 
@@ -43,7 +43,7 @@ export function Faq() {
         </div>
 
         <div className="flex flex-col justify-center gap-3 lg:h-full">
-          {faqItems.map((item, index) => {
+          {rfcConHomoclaveFaqItems.map((item, index) => {
             const open = active === index;
             return (
               <motion.article

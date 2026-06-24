@@ -4,18 +4,18 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import { AnimatedReveal } from "./AnimatedReveal";
-import { SectionShell } from "./LayoutContainer";
+import { consultarRfcFaqItems } from "@/lib/consultarRfcFaq";
+import { AnimatedReveal } from "../AnimatedReveal";
+import { SectionShell } from "../LayoutContainer";
 
-const FAQ_IMAGE = "/images/home/faq-rfc.webp";
+const FAQ_IMAGE = "/images/consultar-rfc/faq.webp";
 
-import { faqItems } from "@/lib/faqContent";
 function FaqIllustration() {
   return (
     <>
       <Image
         src={FAQ_IMAGE}
-        alt="Preguntas frecuentes sobre la calculadora RFC"
+        alt="Preguntas frecuentes sobre RFC"
         fill
         sizes="(max-width: 768px) 0px, 50vw"
         className="object-cover object-center"
@@ -25,7 +25,7 @@ function FaqIllustration() {
   );
 }
 
-export function Faq() {
+export function ConsultarRfcFaq() {
   const [active, setActive] = useState<number>(0);
   const reduce = useReducedMotion();
 
@@ -33,7 +33,7 @@ export function Faq() {
     <SectionShell id="faq" className="bg-section-sky">
       <AnimatedReveal className="text-center lg:text-left">
         <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-text-primary md:text-4xl lg:mx-0">
-          Preguntas Frecuentes Sobre Calculadora RFC
+          Preguntas frecuentes Sobre RFC
         </h2>
       </AnimatedReveal>
 
@@ -43,7 +43,7 @@ export function Faq() {
         </div>
 
         <div className="flex flex-col justify-center gap-3 lg:h-full">
-          {faqItems.map((item, index) => {
+          {consultarRfcFaqItems.map((item, index) => {
             const open = active === index;
             return (
               <motion.article
@@ -76,9 +76,20 @@ export function Faq() {
                       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="border-t border-border px-5 pb-4 pt-2 text-sm leading-relaxed text-text-secondary">
-                        {item.a}
-                      </p>
+                      <div className="border-t border-border px-5 pb-4 pt-2 text-sm leading-relaxed text-text-secondary">
+                        {"bullets" in item && item.bullets ? (
+                          <>
+                            <p>Esto no es un problema. Puedes conocer tu RFC de varias maneras, como por ejemplo:</p>
+                            <ul className="mt-2 ml-5 list-disc space-y-1">
+                              {item.bullets.map((bullet) => (
+                                <li key={bullet}>{bullet}</li>
+                              ))}
+                            </ul>
+                          </>
+                        ) : (
+                          <p>{item.a}</p>
+                        )}
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>

@@ -1,8 +1,9 @@
 /** Section ids used for in-page navigation (homepage). */
 export const SECTION_IDS = {
   generator: "generator",
-  howItWorks: "how-it-works",
-  generatorInfo: "generator-info",
+  queEsCalculadora: "que-es-calculadora-rfc",
+  comoFunciona: "como-funciona",
+  quienPuedeUsar: "quien-puede-usar",
   faq: "faq",
 } as const;
 

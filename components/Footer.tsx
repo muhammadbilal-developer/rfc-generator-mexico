@@ -2,13 +2,18 @@
 
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
-import { SECTION_IDS } from "@/lib/hashNav";
-import { HashLink } from "./HashLink";
 import { LayoutContainer, SECTION_PADDING_Y } from "./LayoutContainer";
 import { Logo } from "./Logo";
 
 const linkClass =
   "font-sans text-sm font-medium tracking-normal text-white/85 transition hover:text-white";
+
+const exploreLinks = [
+  { href: "/consultar-rfc", label: "Consult RFC" },
+  { href: "/rfc-con-homoclave", label: "RFC Homoclave" },
+  { href: "/contact", label: "Contact Us" },
+  { href: "/about", label: "About Us" },
+] as const;
 
 const socialLinks = [
   { href: "#", label: "Twitter", icon: FaTwitter, color: "text-[#1DA1F2]" },
@@ -47,26 +52,13 @@ export function Footer() {
             <div>
               <h3 className="font-sans text-xs font-bold uppercase tracking-wider text-white/70">Explore</h3>
               <ul className="mt-4 space-y-2.5">
-                <li>
-                  <HashLink sectionId={SECTION_IDS.generator} className={linkClass}>
-                    Generator
-                  </HashLink>
-                </li>
-                <li>
-                  <HashLink sectionId={SECTION_IDS.howItWorks} className={linkClass}>
-                    How It Works
-                  </HashLink>
-                </li>
-                <li>
-                  <HashLink sectionId={SECTION_IDS.generatorInfo} className={linkClass}>
-                    Generator Information
-                  </HashLink>
-                </li>
-                <li>
-                  <HashLink sectionId={SECTION_IDS.faq} className={linkClass}>
-                    FAQ
-                  </HashLink>
-                </li>
+                {exploreLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
@@ -85,11 +77,6 @@ export function Footer() {
                 <li>
                   <Link href="/terms-and-conditions" className={linkClass}>
                     Terms & Conditions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className={linkClass}>
-                    Contact
                   </Link>
                 </li>
               </ul>
