@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { HashLink } from "../HashLink";
 import { HomeContentSection } from "../HomeContentSection";
 import { ROUTES } from "@/lib/routes";
 
@@ -40,12 +39,9 @@ export function ConsultarRfcContent() {
         </p>
         <p>
           ¿Por qué las empresas y los particulares{" "}
-          <HashLink
-            sectionId="generator"
-            className="font-medium text-emerald-700 underline-offset-2 hover:underline"
-          >
+          <Link href={ROUTES.home} className="font-medium text-emerald-700 underline-offset-2 hover:underline">
             calcular RFC?
-          </HashLink>{" "}
+          </Link>{" "}
           Esta es la situación:
         </p>
         <ul>
