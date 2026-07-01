@@ -43,7 +43,9 @@ export function Hero() {
               </p>
             </div>
 
-            <HeroScrollCta sectionId={SECTION_IDS.queEsCalculadora}>Saber más</HeroScrollCta>
+            <HeroScrollCta sectionId={SECTION_IDS.comoFunciona}>
+              {headingCase("Cómo funciona nuestra herramienta RFC")}
+            </HeroScrollCta>
           </motion.div>
 
           <motion.div
@@ -52,7 +54,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
           >
-            <RfcGeneratorCard compact className="w-full" />
+            <RfcGeneratorCard compact variant="home" className="w-full" />
           </motion.div>
         </div>
       </LayoutContainer>

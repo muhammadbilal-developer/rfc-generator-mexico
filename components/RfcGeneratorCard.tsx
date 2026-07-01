@@ -3,8 +3,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import {
-  FiCheck,
-  FiCopy,
   FiEdit3,
   FiLoader,
   FiRefreshCcw,
@@ -12,7 +10,9 @@ import {
   FiZap,
 } from "react-icons/fi";
 import { generateRfc, type RfcResult } from "@/lib/rfcEngine";
+import { getRfcGeneratorCopy, type RfcGeneratorVariant } from "@/lib/rfcGeneratorCopy";
 import { rfcFormSchema } from "@/lib/schema";
+import { CopyRfcButton } from "./CopyRfcButton";
 import { PrimaryButton } from "./PrimaryButton";
 import { RfcShareActions } from "./RfcShareActions";
 
@@ -51,27 +51,26 @@ const fields: {
 type RfcGeneratorCardProps = {
   compact?: boolean;
   className?: string;
+  variant?: RfcGeneratorVariant;
 };
 
 function ResultPanel({
   result,
   form,
   compact,
-  copied,
-  onCopy,
   onRecalculate,
+  resultTitle,
 }: {
   result: RfcResult;
   form: FormState;
   compact: boolean;
-  copied: boolean;
-  onCopy: () => void;
   onRecalculate: () => void;
+  resultTitle: string;
 }) {
   return (
     <div className={compact ? "p-4 sm:p-5" : "p-5 sm:p-6 md:p-8"}>
       <p className="text-[10px] font-semibold uppercase tracking-wider text-emerald-800 sm:text-xs">
-        Estimated RFC
+        {resultTitle}
       </p>
       <p
         className={`break-all font-mono font-bold tracking-[0.08em] text-text-primary ${
@@ -94,26 +93,22 @@ function ResultPanel({
         ))}
       </div>
       <div className={`flex flex-wrap items-center gap-2 ${compact ? "mt-3" : "mt-4"}`}>
-        <PrimaryButton
-          type="button"
-          onClick={onCopy}
+        <CopyRfcButton
+          value={result.rfc}
           className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm"
-        >
-          {copied ? <FiCheck aria-hidden /> : <FiCopy aria-hidden />}
-          {copied ? "Copied!" : "Copy RFC"}
-        </PrimaryButton>
+        />
         <button
           type="button"
           onClick={onRecalculate}
           className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm font-semibold text-text-primary transition hover:bg-muted"
         >
           <FiEdit3 className="h-4 w-4" aria-hidden />
-          New calculation
+          Nuevo cálculo
         </button>
       </div>
       {!compact ? (
         <p className="mt-3 text-xs leading-relaxed text-text-secondary">
-          SAT assigns final homoclave; validate official records through SAT.
+          El SAT asigna la homoclave definitiva; valide registros oficiales en sat.gob.mx.
         </p>
       ) : null}
       <RfcShareActions result={result} form={form} />
@@ -121,12 +116,16 @@ function ResultPanel({
   );
 }
 
-export function RfcGeneratorCard({ compact = false, className = "" }: RfcGeneratorCardProps) {
+export function RfcGeneratorCard({
+  compact = false,
+  className = "",
+  variant = "home",
+}: RfcGeneratorCardProps) {
+  const copy = getRfcGeneratorCopy(variant);
   const [form, setForm] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [result, setResult] = useState<RfcResult | null>(null);
   const [loading, setLoading] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   const isValid = useMemo(() => rfcFormSchema.safeParse(form).success, [form]);
   const showResult = Boolean(result);
@@ -140,7 +139,6 @@ export function RfcGeneratorCard({ compact = false, className = "" }: RfcGenerat
     setForm(initial);
     setErrors({});
     setResult(null);
-    setCopied(false);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -163,13 +161,6 @@ export function RfcGeneratorCard({ compact = false, className = "" }: RfcGenerat
     setLoading(false);
   };
 
-  const copyRfc = async () => {
-    if (!result) return;
-    await navigator.clipboard.writeText(result.rfc);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1200);
-  };
-
   return (
     <div
       className={`overflow-hidden rounded-xl border-2 border-white bg-white/90 shadow-[0_16px_48px_rgba(16,185,129,0.12)] backdrop-blur-lg ${className}`}
@@ -186,21 +177,23 @@ export function RfcGeneratorCard({ compact = false, className = "" }: RfcGenerat
             </span>
             <div className="min-w-0">
               <p className={`font-semibold leading-snug ${compact ? "text-xs sm:text-sm" : "text-sm sm:text-base"}`}>
-                {showResult ? "RFC Result" : "Persona física · SAT public algorithm"}
+                {showResult ? copy.resultTitle : copy.cardTitle}
               </p>
-              {!compact && !showResult ? (
-                <p className="text-xs text-white/85">Processed in your browser — not stored</p>
+              {!showResult ? (
+                <p className={`text-white/85 ${compact ? "text-[10px] leading-tight" : "text-xs"}`}>
+                  {copy.cardSubtitle}
+                </p>
               ) : null}
             </div>
           </div>
           <span className="inline-flex shrink-0 items-center gap-1 rounded-lg bg-white/20 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
             <FiZap className="h-3 w-3" aria-hidden />
-            Free
+            Gratis
           </span>
         </div>
       </div>
 
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence initial={false}>
         {showResult && result ? (
           <motion.div
             key="result"
@@ -208,15 +201,15 @@ export function RfcGeneratorCard({ compact = false, className = "" }: RfcGenerat
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
+            layout={false}
             className="bg-gradient-to-br from-emerald-50/80 to-white"
           >
             <ResultPanel
               result={result}
               form={form}
               compact={compact}
-              copied={copied}
-              onCopy={copyRfc}
               onRecalculate={resetAll}
+              resultTitle={copy.resultTitle}
             />
           </motion.div>
         ) : (
@@ -226,6 +219,7 @@ export function RfcGeneratorCard({ compact = false, className = "" }: RfcGenerat
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
+            layout={false}
             onSubmit={handleSubmit}
             className={compact ? "p-4 sm:p-5" : "p-5 sm:p-6 md:p-8"}
           >
@@ -268,10 +262,10 @@ export function RfcGeneratorCard({ compact = false, className = "" }: RfcGenerat
                 {loading ? (
                   <span className="inline-flex items-center gap-2">
                     <FiLoader className="animate-spin" aria-hidden />
-                    Calculating…
+                    {copy.submitLoadingLabel}
                   </span>
                 ) : (
-                  "Generate RFC"
+                  copy.submitLabel
                 )}
               </PrimaryButton>
               <button
@@ -280,7 +274,7 @@ export function RfcGeneratorCard({ compact = false, className = "" }: RfcGenerat
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-white px-5 py-2.5 text-sm font-semibold text-text-primary transition hover:bg-muted sm:w-auto"
               >
                 <FiRefreshCcw className="h-4 w-4" aria-hidden />
-                Clear
+                Limpiar
               </button>
             </div>
           </motion.form>

@@ -12,7 +12,7 @@ type HashLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
   children: ReactNode;
 };
 
-const pagesWithSections = [ROUTES.home, ROUTES.consultarRfc, ROUTES.rfcConHomoclave];
+const pagesWithSections: string[] = [ROUTES.home, ROUTES.consultarRfc, ROUTES.rfcConHomoclave];
 
 /**
  * In-page section link — avoids stacked hashes like /#faq#tool.

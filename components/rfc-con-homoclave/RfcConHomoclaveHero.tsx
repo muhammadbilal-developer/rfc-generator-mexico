@@ -1,5 +1,6 @@
 "use client";
 
+import { headingCase } from "@/lib/headingCase";
 import { RfcGeneratorCard } from "../RfcGeneratorCard";
 import { ToolPageHero } from "../ToolPageHero";
 
@@ -22,9 +23,9 @@ export function RfcConHomoclaveHero() {
       backgroundVariant="vivid"
       sectionId="generator"
       ctaSectionId="que-es-rfc-homoclave"
-      ctaLabel="Saber más"
+      ctaLabel={headingCase("¿Qué es un RFC con homoclave?")}
       tall
-      aside={<RfcGeneratorCard compact className="w-full" />}
+      aside={<RfcGeneratorCard compact variant="rfc-con-homoclave" className="w-full" />}
     />
   );
 }

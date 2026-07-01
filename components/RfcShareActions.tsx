@@ -68,8 +68,17 @@ export function RfcShareActions({ result, form }: RfcShareActionsProps) {
       </div>
       <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap md:flex-nowrap md:gap-3">
         <button type="button" onClick={handleShare} className={actionClass} aria-label="Share RFC result">
-          {shared ? <FiCheck className="h-4 w-4 text-emerald-600" /> : <FiShare2 className="h-4 w-4 text-emerald-600" />}
-          {shared ? "Link copied" : "Share"}
+          <span className="relative inline-flex h-4 w-4 shrink-0">
+            <FiShare2
+              className={`h-4 w-4 text-emerald-600 transition-opacity ${shared ? "opacity-0" : "opacity-100"}`}
+              aria-hidden
+            />
+            <FiCheck
+              className={`absolute inset-0 h-4 w-4 text-emerald-600 transition-opacity ${shared ? "opacity-100" : "opacity-0"}`}
+              aria-hidden
+            />
+          </span>
+          <span>{shared ? "Link copied" : "Share"}</span>
         </button>
         <button
           type="button"

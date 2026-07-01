@@ -37,6 +37,8 @@ export function HeroBackground({
         sizes="100vw"
         className="scale-105 object-cover object-center opacity-60"
         priority={priority}
+        fetchPriority={priority ? "high" : "auto"}
+        loading={priority ? "eager" : "lazy"}
       />
       <div className={`absolute inset-0 ${variantOverlays[variant]}`} />
       <div className="absolute inset-0 bg-white/12" />

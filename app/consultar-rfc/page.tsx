@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import { ConsultarRfcTool } from "@/components/consultar-rfc/ConsultarRfcTool";
 import { ConsultarRfcContent } from "@/components/consultar-rfc/ConsultarRfcContent";
 import { ConsultarRfcFaq } from "@/components/consultar-rfc/ConsultarRfcFaq";
 import { ConsultarRfcHero } from "@/components/consultar-rfc/ConsultarRfcHero";
 import { JsonLd } from "@/components/JsonLd";
-import { RfcGenerator } from "@/components/RfcGenerator";
 import { consultarRfcFaqItems } from "@/lib/consultarRfcFaq";
 import {
   breadcrumbJsonLd,
@@ -44,7 +44,7 @@ export default function ConsultarRfcPage() {
   return (
     <main className="flex flex-1 flex-col">
       <ConsultarRfcHero />
-      <RfcGenerator />
+      <ConsultarRfcTool />
       <ConsultarRfcContent />
       <ConsultarRfcFaq />
       <JsonLd id="consultar-rfc-jsonld" data={schemas} />
