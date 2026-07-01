@@ -19,6 +19,7 @@ type HomeContentSectionProps = {
   imagePosition?: "left" | "right";
   ctaText?: string;
   ctaSectionId?: string;
+  imageAspectRatio?: "4/3" | "3/4";
   children: ReactNode;
 };
 
@@ -32,6 +33,7 @@ export function HomeContentSection({
   imagePosition = "right",
   ctaText,
   ctaSectionId = SECTION_IDS.generator,
+  imageAspectRatio = "4/3",
   children,
 }: HomeContentSectionProps) {
   const bgClass = getSectionBackground(sectionIndex);
@@ -62,7 +64,12 @@ export function HomeContentSection({
             delay={0.08}
             className="lg:sticky lg:top-[calc(var(--header-offset)+1.25rem)] lg:self-start"
           >
-            <ContentImage src={image} alt={imageAlt} title={imageTitle ?? imageAlt} />
+            <ContentImage
+              src={image}
+              alt={imageAlt}
+              title={imageTitle ?? imageAlt}
+              aspectRatio={imageAspectRatio}
+            />
           </AnimatedReveal>
         </div>
       </LayoutContainer>

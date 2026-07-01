@@ -1,7 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaPinterest,
+  FaQuora,
+  FaReddit,
+  FaYoutube,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { SOCIAL_LINKS } from "@/lib/socialLinks";
 import { ROUTES } from "@/lib/routes";
 import { LayoutContainer, SECTION_PADDING_Y } from "./LayoutContainer";
 import { Logo } from "./Logo";
@@ -23,13 +32,21 @@ const legalLinks = [
   { href: ROUTES.autor, label: "Autor" },
 ] as const;
 
-const socialLinks = [
-  { href: "#", label: "Twitter", icon: FaTwitter, color: "text-[#1DA1F2]" },
-  { href: "#", label: "LinkedIn", icon: FaLinkedin, color: "text-[#0A66C2]" },
-  { href: "#", label: "Facebook", icon: FaFacebook, color: "text-[#1877F2]" },
-  { href: "#", label: "Instagram", icon: FaInstagram, color: "text-[#E4405F]" },
-  { href: "#", label: "YouTube", icon: FaYoutube, color: "text-[#FF0000]" },
-] as const;
+const socialIconByLabel = {
+  Instagram: { icon: FaInstagram, color: "text-[#E4405F]" },
+  X: { icon: FaXTwitter, color: "text-slate-900" },
+  Reddit: { icon: FaReddit, color: "text-[#FF4500]" },
+  Quora: { icon: FaQuora, color: "text-[#B92B27]" },
+  YouTube: { icon: FaYoutube, color: "text-[#FF0000]" },
+  Pinterest: { icon: FaPinterest, color: "text-[#BD081C]" },
+  Facebook: { icon: FaFacebook, color: "text-[#1877F2]" },
+} as const;
+
+const socialLinks = SOCIAL_LINKS.map(({ url, label }) => ({
+  href: url,
+  label,
+  ...socialIconByLabel[label],
+}));
 
 export function Footer() {
   return (
@@ -47,6 +64,8 @@ export function Footer() {
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md transition hover:scale-105 hover:shadow-lg"
                 >

@@ -163,9 +163,11 @@ export function HomeContent() {
         id="quien-puede-usar"
         title="¿Quién Puede Utilizar Esta Herramienta RFC?"
         image={IMAGES.quienPuedeUsar}
-        imageAlt="Quién puede utilizar la herramienta RFC en México"
+        imageAlt="Autónomos, empresarios, equipos de nómina y personas que registran su RFC por primera vez usando la calculadora RFC en México"
+        imageTitle="¿Quién puede utilizar esta herramienta RFC? — CalcularRFC"
         sectionIndex={4}
         imagePosition="right"
+        imageAspectRatio="3/4"
         ctaText="¡Encuentra tu RFC aquí!"
         ctaSectionId={SECTION_IDS.generator}
       >
