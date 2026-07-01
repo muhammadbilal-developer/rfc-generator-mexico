@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import {
   FiEdit3,
@@ -15,6 +14,7 @@ import { rfcFormSchema } from "@/lib/schema";
 import { CopyRfcButton } from "./CopyRfcButton";
 import { PrimaryButton } from "./PrimaryButton";
 import { RfcShareActions } from "./RfcShareActions";
+import { SmoothViewToggle } from "./SmoothPanels";
 
 type FormState = {
   apellidoPaterno: string;
@@ -141,7 +141,7 @@ export function RfcGeneratorCard({
     setResult(null);
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const parsed = rfcFormSchema.safeParse(form);
     if (!parsed.success) {
@@ -155,8 +155,6 @@ export function RfcGeneratorCard({
     }
 
     setLoading(true);
-    setResult(null);
-    await new Promise((resolve) => setTimeout(resolve, 950));
     setResult(generateRfc(parsed.data));
     setLoading(false);
   };
@@ -193,33 +191,10 @@ export function RfcGeneratorCard({
         </div>
       </div>
 
-      <AnimatePresence initial={false}>
-        {showResult && result ? (
-          <motion.div
-            key="result"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-            layout={false}
-            className="bg-gradient-to-br from-emerald-50/80 to-white"
-          >
-            <ResultPanel
-              result={result}
-              form={form}
-              compact={compact}
-              onRecalculate={resetAll}
-              resultTitle={copy.resultTitle}
-            />
-          </motion.div>
-        ) : (
-          <motion.form
-            key="form"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-            layout={false}
+      <SmoothViewToggle
+        showSecondary={showResult}
+        primary={
+          <form
             onSubmit={handleSubmit}
             className={compact ? "p-4 sm:p-5" : "p-5 sm:p-6 md:p-8"}
           >
@@ -277,9 +252,24 @@ export function RfcGeneratorCard({
                 Limpiar
               </button>
             </div>
-          </motion.form>
-        )}
-      </AnimatePresence>
+          </form>
+        }
+        secondary={
+          result ? (
+            <div className="bg-gradient-to-br from-emerald-50/80 to-white">
+              <ResultPanel
+                result={result}
+                form={form}
+                compact={compact}
+                onRecalculate={resetAll}
+                resultTitle={copy.resultTitle}
+              />
+            </div>
+          ) : (
+            <div aria-hidden />
+          )
+        }
+      />
     </div>
   );
 }

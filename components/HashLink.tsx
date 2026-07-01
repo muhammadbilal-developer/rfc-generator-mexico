@@ -16,22 +16,22 @@ const pagesWithSections: string[] = [ROUTES.home, ROUTES.consultarRfc, ROUTES.rf
 
 /**
  * In-page section link — avoids stacked hashes like /#faq#tool.
- * Calculator links from tool pages go to the home page (`/`) without a hash.
+ * Generator links scroll in-page on any route that defines a `#generator` section.
  */
 export function HashLink({ sectionId, children, onClick, ...props }: HashLinkProps) {
   const pathname = usePathname();
-  const isHome = pathname === ROUTES.home;
   const isGenerator = sectionId === SECTION_IDS.generator;
+  const onPageWithSections = pagesWithSections.includes(pathname);
 
   let href: string;
   let scrollInPage = false;
 
-  if (isGenerator && isHome) {
+  if (isGenerator && onPageWithSections) {
     href = `#${SECTION_IDS.generator}`;
     scrollInPage = true;
   } else if (isGenerator) {
     href = ROUTES.home;
-  } else if (pagesWithSections.includes(pathname)) {
+  } else if (onPageWithSections) {
     href = `#${sectionId}`;
     scrollInPage = true;
   } else {

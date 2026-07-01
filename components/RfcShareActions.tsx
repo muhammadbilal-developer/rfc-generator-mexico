@@ -6,7 +6,7 @@ import { FiCheck, FiDownload, FiShare2 } from "react-icons/fi";
 import type { RfcPdfInput } from "@/lib/rfcPdf";
 import { downloadRfcPdf } from "@/lib/rfcPdf";
 import type { RfcResult } from "@/lib/rfcEngine";
-import { getGeneratorUrl, getSiteUrl, SITE_NAME } from "@/lib/site";
+import { getGeneratorUrl, getSiteDisplayUrl, getSiteUrl, SITE_NAME } from "@/lib/site";
 
 type RfcShareActionsProps = {
   result: RfcResult;
@@ -102,7 +102,7 @@ export function RfcShareActions({ result, form }: RfcShareActionsProps) {
         </a>
       </div>
       <p className="mt-3 text-xs leading-relaxed text-text-secondary">
-        Every share includes a link to {getSiteUrl().replace(/^https?:\/\//, "")}. PDF uses site branding and logo.
+        Every share includes a link to {getSiteDisplayUrl()}. PDF uses site branding and logo.
       </p>
     </div>
   );

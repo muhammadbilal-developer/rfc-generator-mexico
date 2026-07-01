@@ -1,5 +1,6 @@
 import { AUTHOR } from "./author";
 import { ROUTES } from "./routes";
+import { SITE_LOGO_PATH } from "./site";
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rfc-generator-mexico.vercel.app";
 export const SITE_NAME = "CalcularRFC";
@@ -14,7 +15,7 @@ export function organizationJsonLd() {
     name: SITE_LEGAL_NAME,
     alternateName: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.svg`,
+    logo: `${SITE_URL}${SITE_LOGO_PATH}`,
     description:
       "Calculadora gratuita en línea para estimar el RFC de persona física en formato SAT con lógica algorítmica pública y transparente.",
     sameAs: [],

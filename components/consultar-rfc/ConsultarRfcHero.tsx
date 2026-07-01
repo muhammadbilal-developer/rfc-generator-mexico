@@ -18,6 +18,7 @@ export function ConsultarRfcHero() {
       heroImageAlt="Ilustración de consulta y validación de RFC en línea"
       heroImageTitle="Hero Consultar RFC — Verificar RFC en México"
       backgroundVariant="subtle"
+      ctaSectionId="generator"
       ctaLabel="Calculadora aquí"
       panelIntro={
         <>
