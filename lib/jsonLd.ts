@@ -1,9 +1,9 @@
 import { AUTHOR } from "./author";
 import { ROUTES } from "./routes";
 import { SOCIAL_PROFILE_URLS } from "./socialLinks";
-import { SITE_LOGO_PATH } from "./site";
+import { SITE_LOGO_PATH, SITE_URL } from "./site";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rfc-generator-mexico.vercel.app";
+export { SITE_URL };
 export const SITE_NAME = "CalcularRFC";
 export const SITE_LEGAL_NAME = "RFC Generator Mexico";
 

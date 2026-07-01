@@ -1,5 +1,7 @@
-import { HashLink } from "../HashLink";
+import Link from "next/link";
 import { HomeContentSection } from "../HomeContentSection";
+import { SAT_WEBSITE_URL } from "@/lib/externalLinks";
+import { ROUTES } from "@/lib/routes";
 
 const IMAGES = {
   queEs: "/images/rfc-con-homoclave/que-es-rfc-homoclave.webp",
@@ -25,13 +27,10 @@ export function RfcConHomoclaveContent() {
         <p>
           El RFC es el número de identificación fiscal oficial asignado a toda persona que percibe ingresos. Sin embargo,
           existe una diferencia entre el RFC básico y el RFC con un homoclave. Un RFC básico consta únicamente de los
-          primeros 10 caracteres. Puedes{" "}
-          <HashLink
-            sectionId="generator"
-            className="font-medium text-emerald-700 underline-offset-2 hover:underline"
-          >
+          primeros 10 caracteres.           Puedes{" "}
+          <Link href={ROUTES.home} className="font-medium text-emerald-700 underline-offset-2 hover:underline">
             calcular RFC
-          </HashLink>{" "}
+          </Link>{" "}
           utilizando tu nombre y fecha de nacimiento.
         </p>
         <h3>Comprender El RFC Completo</h3>
@@ -158,14 +157,26 @@ export function RfcConHomoclaveContent() {
           <li>Tu código postal.</li>
         </ul>
         <p>
-          Además, puedes generar y descargar tu certificado tributario de forma gratuita a través del sitio web de la
-          SAT. Solo necesitas usar tu RFC y contraseña. El proceso tarda unos minutos y el documento se genera como un
+          Además, puedes generar y descargar tu certificado tributario de forma gratuita a través del{" "}
+          <a
+            href={SAT_WEBSITE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-emerald-700 underline-offset-2 hover:underline"
+          >
+            sitio web de la SAT
+          </a>
+          . Solo necesitas usar tu RFC y contraseña. El proceso tarda unos minutos y el documento se genera como un
           archivo PDF descargable.
         </p>
         <h3>Servicios En Línea Del SAT</h3>
         <p>
           Si tienes una cuenta SAT activa, puedes iniciar sesión en cualquier momento y consultar tu RFC. El portal te
-          permite validar tu RFC. En algunos casos, podrás usar tu CURP para recuperar tu RFC si la olvidas.
+          permite{" "}
+          <Link href={ROUTES.consultarRfc} className="font-semibold text-emerald-700 underline-offset-2 hover:underline">
+            validar tu RFC
+          </Link>
+          . En algunos casos, podrás usar tu CURP para recuperar tu RFC si la olvidas.
         </p>
         <p>
           La herramienta de validación en línea del SAT acepta su CURP de 18 caracteres y devuelve su RFC completo,

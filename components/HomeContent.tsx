@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SECTION_IDS } from "@/lib/hashNav";
+import { SAT_WEBSITE_URL } from "@/lib/externalLinks";
 import { ROUTES } from "@/lib/routes";
 import { HomeContentSection } from "./HomeContentSection";
 import { ManualVsCalculatorCards } from "./ManualVsCalculatorCards";
@@ -27,8 +28,16 @@ export function HomeContent() {
         imagePosition="right"
       >
         <p>
-          El RFC es un <strong>registro federal de contribuyentes.</strong> El Servicio de Administración Tributaria de
-          México asigna este formulario a cada contribuyente. Es necesario registrarse como persona física o jurídica.
+          El RFC es un <strong>registro federal de contribuyentes.</strong> El{" "}
+          <a
+            href={SAT_WEBSITE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-emerald-700 underline-offset-2 hover:underline"
+          >
+            Servicio de Administración Tributaria
+          </a>{" "}
+          de México asigna este formulario a cada contribuyente. Es necesario registrarse como persona física o jurídica.
           Cumplir con este requisito es fundamental para quienes deben abonar sus obligaciones tributarias.
         </p>
         <p>
@@ -44,7 +53,12 @@ export function HomeContent() {
         </p>
         <ul>
           <li>
-            <strong>Verificar RFC</strong>
+            <Link
+              href={ROUTES.consultarRfc}
+              className="font-semibold text-emerald-700 underline-offset-2 hover:underline"
+            >
+              Verificar RFC
+            </Link>
           </li>
           <li>Complete los formularios de impuestos</li>
           <li>

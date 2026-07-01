@@ -5,6 +5,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HashNavFix } from "@/components/HashNavFix";
+import { siteIcons } from "@/lib/favicons";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,7 +17,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rfc-generator-mexico.vercel.app"),
+  metadataBase: new URL(SITE_URL),
+  icons: siteIcons,
   title: {
     default: "CalcularRFC | Calculadora RFC México",
     template: "%s | CalcularRFC",

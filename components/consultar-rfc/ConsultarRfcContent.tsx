@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { HashLink } from "../HashLink";
 import { HomeContentSection } from "../HomeContentSection";
+import { ROUTES } from "@/lib/routes";
 
 const IMAGES = {
   queEs: "/images/consultar-rfc/que-es-rfc-importancia.webp",
@@ -93,9 +95,15 @@ export function ConsultarRfcContent() {
         </ul>
         <h3>Caracteres 11-13</h3>
         <p>
-          Supongamos que es XX0. Entonces, el RFC con homoclave es LOHJ800414XX0. Para las entidades legales, un RFC
-          tiene 12 caracteres: 3 letras del nombre de la empresa, la fecha de fundación en formato AA/MM/DD y un
-          homoclave de 3 caracteres.
+          Supongamos que es XX0. Entonces, el{" "}
+          <Link
+            href={ROUTES.rfcConHomoclave}
+            className="font-semibold text-emerald-700 underline-offset-2 hover:underline"
+          >
+            RFC con homoclave
+          </Link>{" "}
+          es LOHJ800414XX0. Para las entidades legales, un RFC tiene 12 caracteres: 3 letras del nombre de la empresa,
+          la fecha de fundación en formato AA/MM/DD y un homoclave de 3 caracteres.
         </p>
       </HomeContentSection>
 
