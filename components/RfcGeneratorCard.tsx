@@ -36,10 +36,15 @@ const fields: {
   type: string;
   hint?: string;
 }[] = [
-  { key: "apellidoPaterno", label: "Paternal surname", type: "text", hint: "Required" },
-  { key: "apellidoMaterno", label: "Maternal surname", type: "text", hint: "Optional" },
-  { key: "nombre", label: "Given name(s)", type: "text", hint: "Required" },
-  { key: "fechaNacimiento", label: "Birth date", type: "date", hint: "Required" },
+  { key: "apellidoPaterno", label: "Apellido paterno", type: "text", hint: "Obligatorio" },
+  {
+    key: "apellidoMaterno",
+    label: "Apellido materno",
+    type: "text",
+    hint: "Opcional si solo tiene un apellido",
+  },
+  { key: "nombre", label: "Nombre(s)", type: "text", hint: "Ej: Juan, María de los Ángeles" },
+  { key: "fechaNacimiento", label: "Fecha de nacimiento", type: "date", hint: "Obligatorio" },
 ];
 
 type RfcGeneratorCardProps = {

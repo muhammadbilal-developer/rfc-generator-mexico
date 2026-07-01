@@ -29,6 +29,15 @@ export default function ContactoPage() {
             <p className="mt-3 text-base leading-relaxed text-text-secondary">
               ¿Preguntas sobre su RFC o nuestra calculadora? Respondemos en 1–2 días hábiles.
             </p>
+            <p className="mt-2 text-base leading-relaxed text-text-secondary">
+              Correo directo:{" "}
+              <a
+                href="mailto:icalcularrfc.mx@gmail.com"
+                className="font-medium text-emerald-700 underline-offset-2 hover:underline"
+              >
+                icalcularrfc.mx@gmail.com
+              </a>
+            </p>
           </div>
 
           <section className="grid w-full overflow-hidden rounded-xl border border-border bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.06)] md:grid-cols-5 md:min-h-[520px]">

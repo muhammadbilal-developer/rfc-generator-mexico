@@ -46,6 +46,14 @@ const removeParticles = (value: string): string => {
 
 const safeName = (value?: string): string => removeParticles(value ?? "");
 
+const firstSurnameWord = (value: string): string => {
+  const tokens = cleanString(value).split(" ").filter(Boolean);
+  return tokens[0] ?? "";
+};
+
+const twoLetters = (value: string, fallback = "X"): string =>
+  `${value[0] ?? fallback}${value[1] ?? fallback}`;
+
 const firstLetter = (value: string, fallback = "X"): string => value[0] ?? fallback;
 
 const internalVowel = (value: string): string => {
@@ -113,19 +121,24 @@ const computeDv = (rfc12: string): string => {
 };
 
 const buildBase = (apellidoPaterno: string, apellidoMaterno: string, nombre: string): string => {
-  const pat = safeName(apellidoPaterno);
-  const mat = safeName(apellidoMaterno);
+  const patWord = firstSurnameWord(apellidoPaterno);
+  const matWord = firstSurnameWord(apellidoMaterno);
   const given = effectiveGivenName(nombre);
 
-  if (!pat || !given) {
-    throw new Error("Paternal surname and given name are required.");
+  if (!patWord || !given) {
+    throw new Error("El apellido paterno y el nombre son obligatorios.");
   }
 
   let base = "";
-  if (pat.length <= 2) {
-    base = `${firstLetter(pat)}${firstLetter(mat)}${firstLetter(given)}${given[1] ?? "X"}`;
+  if (!matWord) {
+    // REGLA 7ª: un solo apellido → 2 letras del apellido + 2 del nombre.
+    base = `${twoLetters(patWord)}${twoLetters(given)}`;
+  } else if (patWord.length <= 2) {
+    // REGLA 4ª: apellido paterno de 1–2 letras.
+    base = `${firstLetter(patWord)}${firstLetter(matWord)}${firstLetter(given)}${given[1] ?? "X"}`;
   } else {
-    base = `${firstLetter(pat)}${internalVowel(pat)}${firstLetter(mat)}${firstLetter(given)}`;
+    // REGLA 1ª: estándar (REGLA 5ª: apellido compuesto → primera palabra).
+    base = `${firstLetter(patWord)}${internalVowel(patWord)}${firstLetter(matWord)}${firstLetter(given)}`;
   }
 
   if (INCONVENIENT_WORDS.has(base)) {
@@ -140,7 +153,7 @@ export const generateRfc = (input: RfcInput): RfcResult => {
   const apellidoMaterno = safeName(input.apellidoMaterno ?? "");
   const nombre = safeName(input.nombre);
   const fecha = formatDate(input.fechaNacimiento);
-  const base = buildBase(apellidoPaterno, apellidoMaterno, nombre);
+  const base = buildBase(input.apellidoPaterno, input.apellidoMaterno ?? "", input.nombre);
   const homoclave = computeHomoclave(`${apellidoPaterno} ${apellidoMaterno} ${nombre}`.trim());
   const rfc12 = `${base}${fecha}${homoclave}`;
   const dv = computeDv(rfc12);

@@ -1,17 +1,17 @@
 import { z } from "zod";
 
 export const rfcFormSchema = z.object({
-  apellidoPaterno: z.string().trim().min(1, "Paternal surname is required."),
+  apellidoPaterno: z.string().trim().min(1, "El apellido paterno es obligatorio."),
   apellidoMaterno: z.string().trim().optional(),
-  nombre: z.string().trim().min(1, "Given name(s) are required."),
+  nombre: z.string().trim().min(1, "El nombre es obligatorio."),
   fechaNacimiento: z
     .string()
-    .min(1, "Birth date is required.")
+    .min(1, "La fecha de nacimiento es obligatoria.")
     .refine((value) => {
       const date = new Date(`${value}T00:00:00`);
       const now = new Date();
       return !Number.isNaN(date.getTime()) && date <= now;
-    }, "Birth date must be valid and cannot be in the future."),
+    }, "La fecha de nacimiento debe ser válida y no puede ser futura."),
 });
 
 export const contactSchema = z.object({
