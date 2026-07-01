@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/jsonLd";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/autor", "/politica-de-privacidad", "/terminos-y-condiciones", "/descargo-de-responsabilidad"],
     },
-    sitemap: "https://rfc-generator-mexico.vercel.app/sitemap.xml",
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

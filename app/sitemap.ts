@@ -1,13 +1,21 @@
 import type { MetadataRoute } from "next";
+import { NOINDEX_ROUTES, ROUTES } from "@/lib/routes";
+import { SITE_URL } from "@/lib/jsonLd";
+
+const INDEXABLE_ROUTES = [
+  ROUTES.home,
+  ROUTES.consultarRfc,
+  ROUTES.rfcConHomoclave,
+  ROUTES.sobreNosotros,
+  ROUTES.contacto,
+].filter((route) => !NOINDEX_ROUTES.includes(route as (typeof NOINDEX_ROUTES)[number]));
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://rfc-generator-mexico.vercel.app";
-  const routes = ["/", "/consultar-rfc", "/rfc-con-homoclave", "/about", "/disclaimer", "/privacy-policy", "/terms-and-conditions", "/contact"];
   const lastModified = new Date();
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
+  return INDEXABLE_ROUTES.map((route) => ({
+    url: `${SITE_URL}${route}`,
     lastModified,
-    changeFrequency: route === "/" ? "weekly" : "monthly",
-    priority: route === "/" ? 1 : 0.8,
+    changeFrequency: route === ROUTES.home ? "weekly" : "monthly",
+    priority: route === ROUTES.home ? 1 : 0.8,
   }));
 }

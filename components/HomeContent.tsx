@@ -18,7 +18,7 @@ export function HomeContent() {
         title="¿Qué Es La Calculadora RFC?"
         image={IMAGES.queEs}
         imageAlt="Calculadora RFC y registro federal de contribuyentes en México"
-        bgClass="bg-section-fog"
+        sectionIndex={0}
         imagePosition="right"
       >
         <p>
@@ -50,7 +50,7 @@ export function HomeContent() {
         title="Características Principales De Nuestra Calculadora RFC:"
         image={IMAGES.caracteristicas}
         imageAlt="Características principales de la calculadora RFC en línea"
-        bgClass="bg-section-pearl"
+        sectionIndex={1}
         imagePosition="left"
       >
         <p>
@@ -89,7 +89,7 @@ export function HomeContent() {
         title="Cómo Funciona Nuestra Herramienta RFC:"
         image={IMAGES.comoFunciona}
         imageAlt="Cómo funciona la herramienta de generación de RFC según reglas SAT"
-        bgClass="bg-section-mint"
+        sectionIndex={2}
         imagePosition="right"
       >
         <p>
@@ -131,7 +131,7 @@ export function HomeContent() {
         title="¿Cuántos Caracteres Tiene Un RFC?"
         image={IMAGES.caracteres}
         imageAlt="Estructura de caracteres de un RFC persona física y moral"
-        bgClass="bg-section-pearl"
+        sectionIndex={3}
         imagePosition="left"
       >
         <p>
@@ -155,7 +155,7 @@ export function HomeContent() {
         title="¿Quién Puede Utilizar Esta Herramienta RFC?"
         image={IMAGES.quienPuedeUsar}
         imageAlt="Quién puede utilizar la herramienta RFC en México"
-        bgClass="bg-section-fog"
+        sectionIndex={4}
         imagePosition="right"
         ctaText="¡Encuentra tu RFC aquí!"
       >
@@ -191,7 +191,7 @@ export function HomeContent() {
         title="¿Por Qué Usar Una Calculadora RFC En Lugar De Hacerlo Manualmente?"
         image={IMAGES.vsManual}
         imageAlt="Comparación entre cálculo manual de RFC y calculadora RFC"
-        bgClass="bg-section-pearl"
+        sectionIndex={5}
         imagePosition="left"
       >
         <p>
@@ -231,7 +231,7 @@ export function HomeContent() {
         title="Por Qué La Precisión Es Importante En La Generación De RFC"
         image={IMAGES.precision}
         imageAlt="Importancia de la precisión en la generación de RFC"
-        bgClass="bg-section-mint"
+        sectionIndex={6}
         imagePosition="right"
         ctaText="¡Evite errores y genere el RFC de la manera correcta!"
       >

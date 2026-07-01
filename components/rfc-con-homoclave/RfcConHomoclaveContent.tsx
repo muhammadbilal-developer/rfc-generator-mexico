@@ -17,7 +17,7 @@ export function RfcConHomoclaveContent() {
         title="¿Qué Es Un RFC Con Homoclave?"
         image={IMAGES.queEs}
         imageAlt="Qué es un RFC con homoclave en México"
-        bgClass="bg-section-fog"
+        sectionIndex={0}
         imagePosition="right"
         ctaSectionId="generator"
       >
@@ -46,7 +46,7 @@ export function RfcConHomoclaveContent() {
         title="¿Por Qué SAT Añade La Homoclave Al RFC?"
         image={IMAGES.porQueSat}
         imageAlt="Por qué el SAT añade la homoclave al RFC"
-        bgClass="bg-section-pearl"
+        sectionIndex={1}
         imagePosition="left"
         ctaText="¡Consigue mi RFC con Homoclave aquí!"
         ctaSectionId="generator"
@@ -75,7 +75,7 @@ export function RfcConHomoclaveContent() {
         title="¿Cómo Está Estructurado Un RFC Con homoclave?"
         image={IMAGES.estructura}
         imageAlt="Cómo está estructurado un RFC con homoclave"
-        bgClass="bg-section-mint"
+        sectionIndex={2}
         imagePosition="right"
         ctaSectionId="generator"
       >
@@ -108,7 +108,7 @@ export function RfcConHomoclaveContent() {
         title="¿Qué Información Contiene La Homoclave?"
         image={IMAGES.informacion}
         imageAlt="Qué información contiene la homoclave del RFC"
-        bgClass="bg-section-pearl"
+        sectionIndex={3}
         imagePosition="left"
         ctaSectionId="generator"
       >
@@ -132,7 +132,7 @@ export function RfcConHomoclaveContent() {
         title="¿Dónde puedes encontrar tu RFC con homoclave oficial?"
         image={IMAGES.dondeEncontrar}
         imageAlt="Dónde encontrar tu RFC con homoclave oficial"
-        bgClass="bg-section-fog"
+        sectionIndex={4}
         imagePosition="right"
         ctaSectionId="generator"
       >
@@ -179,7 +179,7 @@ export function RfcConHomoclaveContent() {
         title="RFC Con Homoclave Para Particulares Y Empresas"
         image={IMAGES.particularesEmpresas}
         imageAlt="RFC con homoclave para particulares y empresas"
-        bgClass="bg-section-mint"
+        sectionIndex={5}
         imagePosition="left"
         ctaSectionId="generator"
       >

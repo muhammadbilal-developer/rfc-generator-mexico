@@ -4,14 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import { ROUTES } from "@/lib/routes";
 import { LayoutContainer } from "./LayoutContainer";
 import { Logo } from "./Logo";
 
 const links = [
-  { href: "/consultar-rfc", label: "Consult RFC" },
-  { href: "/rfc-con-homoclave", label: "RFC Homoclave" },
-  { href: "/contact", label: "Contact Us" },
-  { href: "/about", label: "About Us" },
+  { href: ROUTES.consultarRfc, label: "Consultar RFC" },
+  { href: ROUTES.rfcConHomoclave, label: "RFC con Homoclave" },
+  { href: ROUTES.contacto, label: "Contacto" },
+  { href: ROUTES.sobreNosotros, label: "Sobre Nosotros" },
 ] as const;
 
 const navLinkClass =
@@ -50,7 +51,7 @@ export function Header() {
       >
         <LayoutContainer className="relative w-full px-4 sm:px-6 md:px-8 lg:px-10">
           <nav
-            className="flex items-center justify-between gap-3 py-3.5 sm:gap-4 sm:py-4 md:py-5"
+            className="flex items-center justify-between gap-3 py-2 sm:gap-4 sm:py-2.5 md:py-3"
             aria-label="Main navigation"
           >
             <div className="min-w-0 shrink">

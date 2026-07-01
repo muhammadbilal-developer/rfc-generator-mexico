@@ -22,7 +22,7 @@ export function ConsultarRfcContent() {
         title="¿Qué Es El RFC Y Por Qué Es Importante En México?"
         image={IMAGES.queEs}
         imageAlt="Qué es el RFC y por qué es importante en México"
-        bgClass="bg-section-fog"
+        sectionIndex={0}
         imagePosition="right"
         ctaSectionId="generator"
       >
@@ -55,7 +55,7 @@ export function ConsultarRfcContent() {
         title="Cómo Se Estructura El RFC"
         image={IMAGES.estructura}
         imageAlt="Cómo se estructura el RFC en México"
-        bgClass="bg-section-pearl"
+        sectionIndex={1}
         imagePosition="left"
         ctaSectionId="generator"
       >
@@ -94,7 +94,7 @@ export function ConsultarRfcContent() {
         title="Cómo Calcular RFC"
         image={IMAGES.calcular}
         imageAlt="Cómo calcular RFC según reglas SAT"
-        bgClass="bg-section-mint"
+        sectionIndex={2}
         imagePosition="right"
         ctaSectionId="generator"
       >
@@ -141,7 +141,7 @@ export function ConsultarRfcContent() {
         title="Sacar RFC Con CURP:"
         image={IMAGES.curp}
         imageAlt="Sacar RFC con CURP en México"
-        bgClass="bg-section-pearl"
+        sectionIndex={3}
         imagePosition="left"
         ctaSectionId="generator"
       >
@@ -176,7 +176,7 @@ export function ConsultarRfcContent() {
         title="Cómo Obtener RFC Del SAT"
         image={IMAGES.obtenerSat}
         imageAlt="Cómo obtener RFC del SAT"
-        bgClass="bg-section-fog"
+        sectionIndex={4}
         imagePosition="right"
         ctaSectionId="generator"
       >
@@ -219,7 +219,7 @@ export function ConsultarRfcContent() {
         title="¿Quién Necesita Un RFC En México?"
         image={IMAGES.quienNecesita}
         imageAlt="Quién necesita un RFC en México"
-        bgClass="bg-section-pearl"
+        sectionIndex={5}
         imagePosition="left"
         ctaSectionId="generator"
       >
@@ -255,7 +255,7 @@ export function ConsultarRfcContent() {
         title="Explicación De Los Tipos De RFC"
         image={IMAGES.tipos}
         imageAlt="Explicación de los tipos de RFC en México"
-        bgClass="bg-section-mint"
+        sectionIndex={6}
         imagePosition="right"
         ctaText="¿Cuál es mi RFC? ¡Calcúlelo aquí!"
         ctaSectionId="generator"
@@ -301,7 +301,7 @@ export function ConsultarRfcContent() {
         title="Cómo Imprimir O Descargar Su RFC"
         image={IMAGES.imprimir}
         imageAlt="Cómo imprimir o descargar su RFC"
-        bgClass="bg-section-pearl"
+        sectionIndex={7}
         imagePosition="left"
         ctaSectionId="generator"
       >
@@ -331,7 +331,7 @@ export function ConsultarRfcContent() {
         title="Validar RFC Cómo Comprobar Si Es Correcto O Activo"
         image={IMAGES.validar}
         imageAlt="Validar RFC y comprobar si es correcto o activo"
-        bgClass="bg-section-fog"
+        sectionIndex={8}
         imagePosition="right"
         ctaSectionId="generator"
       >
@@ -354,7 +354,7 @@ export function ConsultarRfcContent() {
         title="RFC Vs. CURP Vs. NSS"
         image={IMAGES.comparacion}
         imageAlt="Comparación entre RFC, CURP y NSS"
-        bgClass="bg-section-pearl"
+        sectionIndex={9}
         imagePosition="left"
         ctaSectionId="generator"
       >
@@ -418,7 +418,7 @@ export function ConsultarRfcContent() {
         title="Errores Comunes Al Calcular RFC"
         image={IMAGES.errores}
         imageAlt="Errores comunes al calcular RFC"
-        bgClass="bg-section-mint"
+        sectionIndex={10}
         imagePosition="right"
         ctaSectionId="generator"
       >

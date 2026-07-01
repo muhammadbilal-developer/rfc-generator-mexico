@@ -1,6 +1,7 @@
 "use client";
 
 import { FiZap } from "react-icons/fi";
+import { headingCase } from "@/lib/headingCase";
 import { AnimatedReveal } from "./AnimatedReveal";
 import { LayoutContainer, SECTION_PADDING_Y } from "./LayoutContainer";
 import { RfcGeneratorCard } from "./RfcGeneratorCard";
@@ -22,11 +23,11 @@ export function RfcGenerator() {
             RFC Generator · Free
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-text-primary md:text-4xl lg:text-[2.5rem]">
-            RFC Calculator Tool
+            {headingCase("Herramienta Calculadora RFC")}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-text-secondary">
-            Enter your surnames, given names, and birth date. Get an instant SAT-format estimate with share, PDF, and
-            WhatsApp options.
+            Introduzca sus apellidos, nombre(s) y fecha de nacimiento. Obtenga una estimación instantánea en formato SAT
+            con opciones para compartir, PDF y WhatsApp.
           </p>
         </AnimatedReveal>
 

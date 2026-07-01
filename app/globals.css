@@ -29,7 +29,7 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --spacing-section-y: 70px;
-  --header-offset: 5rem;
+  --header-offset: 4.25rem;
 
   --color-section-mint: #ecfdf5;
   --color-section-sky: #f0fdf4;
@@ -39,7 +39,7 @@
 
 @media (min-width: 768px) {
   :root {
-    --header-offset: 5.5rem;
+    --header-offset: 5.25rem;
   }
 }
 
@@ -157,12 +157,18 @@ h3 {
   background-color: var(--color-section-fog);
 }
 
-/* Full-width legal / content pages (1440px layout) */
+/* Full-width legal / content pages */
 .legal-prose {
   width: 100%;
   max-width: 100%;
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: left;
+  hyphens: auto;
+}
+
+.legal-prose p,
+.legal-prose li {
+  text-align: left;
+  word-spacing: normal;
 }
 
 .legal-prose p,
@@ -180,4 +186,13 @@ h3 {
 .legal-prose h2,
 .legal-prose h3 {
   text-align: left;
+}
+
+/* Site-wide surface radius — max xl (0.75rem) */
+:where(
+  .rounded-2xl,
+  .rounded-3xl,
+  [class*="rounded-["]
+) {
+  border-radius: 0.75rem;
 }

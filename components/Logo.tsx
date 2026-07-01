@@ -1,26 +1,34 @@
+import Image from "next/image";
 import Link from "next/link";
-import { HiMiniShieldCheck } from "react-icons/hi2";
+
+const LOGO_SRC = "/images/brand/logo.webp";
 
 type LogoProps = {
   light?: boolean;
 };
 
 export function Logo({ light = false }: LogoProps) {
-  const textColor = light ? "text-white" : "text-text-primary";
-  const chipBg = light ? "bg-white/10" : "bg-emerald-100";
-
   return (
     <Link
       href="/"
-      aria-label="RFC Generator home"
-      className="inline-flex max-w-[min(100%,14rem)] items-center gap-2 font-sans tracking-normal sm:max-w-none sm:gap-2.5"
+      aria-label="CalcularRFC home"
+      className="inline-flex max-w-[min(100%,20rem)] items-center sm:max-w-none "
     >
-      <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg sm:h-9 sm:w-9 sm:rounded-xl ${chipBg}`}>
-        <HiMiniShieldCheck className={`h-4 w-4 sm:h-5 sm:w-5 ${light ? "text-white" : "text-emerald-600"}`} />
-      </span>
-      <span className={`min-w-0 truncate text-xs font-semibold leading-tight sm:text-sm md:text-base lg:text-lg ${textColor}`}>
-        RFC{" "}
-        <span className={light ? "font-semibold text-white/90" : "text-text-secondary"}>Generator Mexico</span>
+      <Image
+        src={LOGO_SRC}
+        alt="Logo de CalcularRFC"
+        title="CalcularRFC — Inicio"
+        width={48}
+        height={48}
+        className={`h-12 w-12 shrink-0 object-contain sm:h-14 sm:w-14 ${light ? "brightness-0 invert" : ""}`}
+        priority
+      />
+      <span
+        className={`truncate text-xl font-bold tracking-tight sm:text-xl ${
+          light ? "text-white" : "text-emerald-800"
+        }`}
+      >
+        CalcularRFC
       </span>
     </Link>
   );

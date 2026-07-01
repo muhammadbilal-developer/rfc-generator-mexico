@@ -1,10 +1,16 @@
-import Script from "next/script";
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { RfcConHomoclaveContent } from "@/components/rfc-con-homoclave/RfcConHomoclaveContent";
 import { RfcConHomoclaveFaq } from "@/components/rfc-con-homoclave/RfcConHomoclaveFaq";
 import { RfcConHomoclaveHero } from "@/components/rfc-con-homoclave/RfcConHomoclaveHero";
-import { RfcGenerator } from "@/components/RfcGenerator";
 import { rfcConHomoclaveFaqItems } from "@/lib/rfcConHomoclaveFaq";
+import {
+  breadcrumbJsonLd,
+  faqPageJsonLd,
+  webApplicationJsonLd,
+  webPageJsonLd,
+} from "@/lib/jsonLd";
+import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "RFC con Homoclave: Por qué importan los últimos 3 caracteres",
@@ -12,29 +18,34 @@ export const metadata: Metadata = {
     "Obtén tu RFC con Homoclave en segundos con nuestra calculadora. Su uso eficaz te ayudará en tus transacciones financieras.",
 };
 
+const pageDescription =
+  "Calculadora gratuita para estimar RFC con homoclave en México, con desglose de los últimos caracteres y guía educativa.";
+
 export default function RfcConHomoclavePage() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: rfcConHomoclaveFaqItems.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.a,
-      },
-    })),
-  };
+  const schemas = [
+    webApplicationJsonLd({
+      name: "RFC con Homoclave — CalcularRFC",
+      description: pageDescription,
+      path: ROUTES.rfcConHomoclave,
+    }),
+    webPageJsonLd({
+      name: "RFC con Homoclave — CalcularRFC",
+      description: pageDescription,
+      path: ROUTES.rfcConHomoclave,
+    }),
+    breadcrumbJsonLd([
+      { name: "Inicio", path: ROUTES.home },
+      { name: "RFC con Homoclave", path: ROUTES.rfcConHomoclave },
+    ]),
+    faqPageJsonLd(rfcConHomoclaveFaqItems),
+  ];
 
   return (
-    <main>
+    <main className="flex flex-1 flex-col">
       <RfcConHomoclaveHero />
-      <RfcGenerator />
       <RfcConHomoclaveContent />
       <RfcConHomoclaveFaq />
-      <Script id="rfc-con-homoclave-faq-jsonld" type="application/ld+json">
-        {JSON.stringify(faqSchema)}
-      </Script>
+      <JsonLd id="rfc-con-homoclave-jsonld" data={schemas} />
     </main>
   );
 }
