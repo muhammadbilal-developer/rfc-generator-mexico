@@ -12,7 +12,7 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import { SOCIAL_LINKS } from "@/lib/socialLinks";
 import { ROUTES } from "@/lib/routes";
-import { LayoutContainer, SECTION_PADDING_Y } from "./LayoutContainer";
+import { LayoutContainer } from "./LayoutContainer";
 import { Logo } from "./Logo";
 
 const linkClass =
@@ -51,7 +51,7 @@ const socialLinks = SOCIAL_LINKS.map(({ url, label }) => ({
 export function Footer() {
   return (
     <footer className="chrome-gradient site-footer w-full text-white">
-      <LayoutContainer className={`${SECTION_PADDING_Y} relative`}>
+      <LayoutContainer className="relative py-6 md:py-14 lg:py-[70px]">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">
             <Logo light />
@@ -77,7 +77,7 @@ export function Footer() {
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:col-span-7 md:grid-cols-2 md:pl-8">
             <div>
-              <h3 className="font-sans text-xs font-bold uppercase tracking-wider text-white/70">Explorar</h3>
+              <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/70">Explorar</p>
               <ul className="mt-4 space-y-2.5">
                 {exploreLinks.map((link) => (
                   <li key={link.href}>
@@ -89,7 +89,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-sans text-xs font-bold uppercase tracking-wider text-white/70">Legal</h3>
+              <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/70">Legal</p>
               <ul className="mt-4 space-y-2.5">
                 {legalLinks.map((link) => (
                   <li key={link.href}>
@@ -104,7 +104,7 @@ export function Footer() {
         </div>
       </LayoutContainer>
 
-      <div className="border-t border-white/15 bg-black/10 py-4">
+      <div className="border-t border-white/15 bg-black/10 py-3 md:py-4">
         <LayoutContainer>
           <p className="text-center font-sans text-xs text-white/75">
             © {new Date().getFullYear()} CalcularRFC. Todos los derechos reservados.
