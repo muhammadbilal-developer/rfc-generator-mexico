@@ -5,10 +5,12 @@ import { ContactForm } from "@/components/ContactForm";
 import { JsonLd } from "@/components/JsonLd";
 import { ContentPageContainer, SECTION_PADDING_Y } from "@/components/LayoutContainer";
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonLd";
+import { absoluteTitle, pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
-  title: "Contacto",
+  ...pageCanonical(ROUTES.contacto),
+  ...absoluteTitle("Contacto CalcularRFC — Soporte y consultas sobre RFC"),
   description:
     "Contacte al equipo de CalcularRFC para soporte técnico, consultas legales, privacidad o colaboraciones.",
 };

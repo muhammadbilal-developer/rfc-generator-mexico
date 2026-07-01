@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/LegalPageLayout";
 import { LegalCrossLinks } from "@/components/LegalCrossLinks";
-import { noindexMetadata } from "@/lib/metadata";
+import { absoluteTitle, noindexMetadata, pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
   ...noindexMetadata,
-  title: "Descargo de Responsabilidad",
+  ...pageCanonical(ROUTES.descargoResponsabilidad),
+  ...absoluteTitle("Descargo de Responsabilidad CalcularRFC — RFC México"),
   description:
     "Descargo de responsabilidad de CalcularRFC: límites de la calculadora RFC, estimaciones informativas, no afiliación al SAT y uso bajo su propio riesgo.",
 };

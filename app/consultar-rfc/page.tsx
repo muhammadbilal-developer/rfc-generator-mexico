@@ -11,9 +11,11 @@ import {
   webApplicationJsonLd,
   webPageJsonLd,
 } from "@/lib/jsonLd";
+import { pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
+  ...pageCanonical(ROUTES.consultarRfc),
   title: "Consultar RFC: Comprueba Y Verifica Tu Identificación Fiscal",
   description:
     "Utilice nuestra herramienta para consultar el RFC en línea. ¡Verifique su RFC y confirma los datos del contribuyente con facilidad!",

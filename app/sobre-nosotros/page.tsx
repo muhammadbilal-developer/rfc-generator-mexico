@@ -4,10 +4,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { ContentPageContainer, SECTION_PADDING_Y } from "@/components/LayoutContainer";
 import { AUTHOR } from "@/lib/author";
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonLd";
+import { absoluteTitle, pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
-  title: "Sobre Nosotros",
+  ...pageCanonical(ROUTES.sobreNosotros),
+  ...absoluteTitle("Sobre Nosotros — Calculadora RFC gratuita en México"),
   description:
     "Conoce CalcularRFC: calculadora gratuita de RFC para México con estimaciones en formato SAT, procesamiento en el navegador y sin registro.",
 };

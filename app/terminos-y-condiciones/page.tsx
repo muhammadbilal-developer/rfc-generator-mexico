@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/LegalPageLayout";
 import { LegalCrossLinks } from "@/components/LegalCrossLinks";
-import { noindexMetadata } from "@/lib/metadata";
+import { absoluteTitle, noindexMetadata, pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
   ...noindexMetadata,
-  title: "Términos y Condiciones",
+  ...pageCanonical(ROUTES.terminosCondiciones),
+  ...absoluteTitle("Términos y Condiciones de CalcularRFC — uso RFC México"),
   description:
     "Términos y condiciones de uso de CalcularRFC: alcance del servicio, uso aceptable, propiedad intelectual y limitaciones.",
 };

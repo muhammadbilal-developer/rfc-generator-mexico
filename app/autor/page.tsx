@@ -4,11 +4,12 @@ import { LegalPageLayout } from "@/components/LegalPageLayout";
 import { JsonLd } from "@/components/JsonLd";
 import { AUTHOR } from "@/lib/author";
 import { authorPersonJsonLd, authorProfilePageJsonLd } from "@/lib/jsonLd";
-import { noindexMetadata } from "@/lib/metadata";
+import { noindexMetadata, pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
   ...noindexMetadata,
+  ...pageCanonical(ROUTES.autor),
   title: "Autor",
   description: `Perfil de ${AUTHOR.name}, especialista en contenido fiscal con ${AUTHOR.experienceYears} años de experiencia en CalcularRFC.`,
 };

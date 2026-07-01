@@ -10,9 +10,11 @@ import {
   webApplicationJsonLd,
   webPageJsonLd,
 } from "@/lib/jsonLd";
+import { pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
+  ...pageCanonical(ROUTES.rfcConHomoclave),
   title: "RFC con Homoclave: Por qué importan los últimos 3 caracteres",
   description:
     "Obtén tu RFC con Homoclave en segundos con nuestra calculadora. Su uso eficaz te ayudará en tus transacciones financieras.",

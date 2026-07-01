@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   },
   description:
     "Calculadora gratuita para estimar el RFC de persona física en formato SAT con lógica algorítmica pública y desglose transparente.",
-  alternates: { canonical: "/" },
   openGraph: {
     title: "CalcularRFC",
     description: "Estima tu RFC con reglas algorítmicas públicas del formato SAT.",

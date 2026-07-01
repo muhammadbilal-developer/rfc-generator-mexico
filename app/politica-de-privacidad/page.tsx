@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/LegalPageLayout";
 import { LegalCrossLinks } from "@/components/LegalCrossLinks";
-import { noindexMetadata } from "@/lib/metadata";
+import { absoluteTitle, noindexMetadata, pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
   ...noindexMetadata,
-  title: "Política de Privacidad",
+  ...pageCanonical(ROUTES.politicaPrivacidad),
+  ...absoluteTitle("Política de Privacidad de CalcularRFC — datos y RFC"),
   description:
     "Política de privacidad de CalcularRFC: tratamiento de datos, cookies, analítica, derechos del usuario y seguridad.",
 };

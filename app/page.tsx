@@ -11,9 +11,11 @@ import {
   webApplicationJsonLd,
   webPageJsonLd,
 } from "@/lib/jsonLd";
+import { pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
+  ...pageCanonical(ROUTES.home),
   title: "Calcular RFC y genera tu estimación de RFC en México.",
   description:
     "Calcular RFC en segundos! Introduce tus datos y obtén una estimación rápida y precisa de la RFC gratis. No es necesario registrarse.",

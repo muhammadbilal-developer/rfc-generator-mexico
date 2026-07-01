@@ -20,16 +20,30 @@ const pagesWithSections: string[] = [ROUTES.home, ROUTES.consultarRfc, ROUTES.rf
  */
 export function HashLink({ sectionId, children, onClick, ...props }: HashLinkProps) {
   const pathname = usePathname();
+  const isHome = pathname === ROUTES.home;
   const isGenerator = sectionId === SECTION_IDS.generator;
-  const onSamePage = !isGenerator && pagesWithSections.includes(pathname);
-  const href = isGenerator ? ROUTES.home : onSamePage ? `#${sectionId}` : `${ROUTES.home}#${sectionId}`;
+
+  let href: string;
+  let scrollInPage = false;
+
+  if (isGenerator && isHome) {
+    href = `#${SECTION_IDS.generator}`;
+    scrollInPage = true;
+  } else if (isGenerator) {
+    href = ROUTES.home;
+  } else if (pagesWithSections.includes(pathname)) {
+    href = `#${sectionId}`;
+    scrollInPage = true;
+  } else {
+    href = `${ROUTES.home}#${sectionId}`;
+  }
 
   return (
     <Link
       href={href}
       {...props}
       onClick={(e) => {
-        if (onSamePage) {
+        if (scrollInPage) {
           e.preventDefault();
           scrollToSection(sectionId);
           setHash(sectionId, true);

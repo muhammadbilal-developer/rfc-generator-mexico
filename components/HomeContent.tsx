@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SECTION_IDS } from "@/lib/hashNav";
 import { ROUTES } from "@/lib/routes";
 import { HomeContentSection } from "./HomeContentSection";
 
@@ -166,6 +167,7 @@ export function HomeContent() {
         sectionIndex={4}
         imagePosition="right"
         ctaText="¡Encuentra tu RFC aquí!"
+        ctaSectionId={SECTION_IDS.generator}
       >
         <p>
           El RFC es necesario en una amplia gama de situaciones en México. Ya sea que esté buscando su propio número de
@@ -242,6 +244,7 @@ export function HomeContent() {
         sectionIndex={6}
         imagePosition="right"
         ctaText="¡Evite errores y genere el RFC de la manera correcta!"
+        ctaSectionId={SECTION_IDS.generator}
       >
         <p>
           Un RFC incorrecto causa inconvenientes que requieren tiempo y esfuerzo para resolverse. Por eso es importante
