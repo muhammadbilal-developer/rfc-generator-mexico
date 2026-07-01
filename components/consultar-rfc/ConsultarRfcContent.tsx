@@ -377,7 +377,7 @@ export function ConsultarRfcContent() {
         ctaSectionId="generator"
       >
         <p>En México se utilizan comúnmente tres códigos. A continuación, se detallan sus diferencias.</p>
-        <div className="overflow-x-auto">
+        <div className="table-scroll-wrap w-full max-w-full">
           <table>
             <thead>
               <tr>

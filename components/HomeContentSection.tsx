@@ -42,13 +42,13 @@ export function HomeContentSection({
     <section id={id} className={`${SECTION_PADDING_Y} ${bgClass}`}>
       <LayoutContainer>
         <div
-          className={`grid items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16 ${
+          className={`grid min-w-0 items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16 ${
             imagePosition === "left" ? "lg:[&>div:first-child]:order-2 lg:[&>div:last-child]:order-1" : ""
           }`}
         >
-          <AnimatedReveal>
+          <AnimatedReveal className="min-w-0">
             <h2 className="text-2xl font-bold tracking-tight text-text-primary sm:text-3xl lg:text-4xl">{headingCase(title)}</h2>
-            <div className="mt-5 space-y-4 text-sm leading-relaxed text-text-secondary sm:text-base [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:capitalize [&_h3]:text-text-primary [&_li]:ml-5 [&_li]:list-disc [&_ol]:ml-5 [&_ol]:list-decimal [&_ol]:space-y-1 [&_strong]:font-semibold [&_strong]:text-text-primary [&_table]:mt-4 [&_table]:w-full [&_table]:border-collapse [&_table]:overflow-hidden [&_table]:rounded-xl [&_table]:border [&_table]:border-border [&_td]:border [&_td]:border-border [&_td]:p-3 [&_td]:text-sm [&_th]:border [&_th]:border-border [&_th]:bg-emerald-50/80 [&_th]:p-3 [&_th]:text-left [&_th]:text-sm [&_th]:font-semibold [&_th]:text-text-primary [&_ul]:space-y-2">
+            <div className="mt-5 space-y-4 text-sm leading-relaxed text-text-secondary sm:text-base [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:capitalize [&_h3]:text-text-primary [&_li]:ml-5 [&_li]:list-disc [&_ol]:ml-5 [&_ol]:list-decimal [&_ol]:space-y-1 [&_strong]:font-semibold [&_strong]:text-text-primary [&_table]:mt-4 [&_table]:w-full [&_table]:border-collapse [&_table]:overflow-hidden [&_table]:rounded-xl [&_table]:border [&_table]:border-border [&_td]:border [&_td]:border-border [&_td]:p-3 [&_td]:text-sm [&_th]:border [&_th]:border-border [&_th]:bg-emerald-50/80 [&_th]:p-3 [&_th]:text-left [&_th]:text-sm [&_th]:font-semibold [&_th]:text-text-primary [&_ul]:space-y-2 [&_.table-scroll-wrap]:max-w-full [&_.table-scroll-wrap]:overflow-x-auto [&_.table-scroll-wrap]:overscroll-x-contain [&_.table-scroll-wrap_table]:!mt-0 [&_.table-scroll-wrap_table]:w-max [&_.table-scroll-wrap_table]:min-w-[36rem] lg:[&_.table-scroll-wrap_table]:w-full lg:[&_.table-scroll-wrap_table]:min-w-0 [&_.table-scroll-wrap_td]:min-w-[7.5rem] [&_.table-scroll-wrap_td]:whitespace-normal [&_.table-scroll-wrap_th]:whitespace-nowrap">
               {children}
             </div>
             {ctaText ? (
@@ -62,7 +62,7 @@ export function HomeContentSection({
 
           <AnimatedReveal
             delay={0.08}
-            className="lg:sticky lg:top-[calc(var(--header-offset)+1.25rem)] lg:self-start"
+            className="min-w-0 lg:sticky lg:top-[calc(var(--header-offset)+1.25rem)] lg:self-start"
           >
             <ContentImage
               src={image}
