@@ -34,17 +34,18 @@ const fields: {
   key: keyof FormState;
   label: string;
   type: string;
+  placeholder?: string;
   hint?: string;
 }[] = [
-  { key: "apellidoPaterno", label: "Apellido paterno", type: "text", hint: "Obligatorio" },
+  { key: "nombre", label: "Nombre(s)", type: "text", placeholder: "Tu(s) nombre(s)" },
+  { key: "apellidoPaterno", label: "Primer apellido", type: "text", placeholder: "Tu primer apellido" },
   {
     key: "apellidoMaterno",
-    label: "Apellido materno",
+    label: "Segundo apellido (opcional)",
     type: "text",
-    hint: "Opcional si solo tiene un apellido",
+    placeholder: "Tu segundo apellido",
   },
-  { key: "nombre", label: "Nombre(s)", type: "text", hint: "Ej: Juan, María de los Ángeles" },
-  { key: "fechaNacimiento", label: "Fecha de nacimiento", type: "date", hint: "Obligatorio" },
+  { key: "fechaNacimiento", label: "Fecha de nacimiento", type: "date" },
 ];
 
 type RfcGeneratorCardProps = {
@@ -229,7 +230,7 @@ export function RfcGeneratorCard({ compact = false, className = "" }: RfcGenerat
             className={compact ? "p-4 sm:p-5" : "p-5 sm:p-6 md:p-8"}
           >
             <div className="flex flex-col gap-3">
-              {fields.map(({ key, label, type, hint }) => (
+              {fields.map(({ key, label, type, placeholder, hint }) => (
                 <label key={key} className="block">
                   <span className="flex items-baseline justify-between gap-2 text-xs font-semibold text-text-primary sm:text-sm">
                     {label}
@@ -241,6 +242,7 @@ export function RfcGeneratorCard({ compact = false, className = "" }: RfcGenerat
                     type={type}
                     value={form[key]}
                     onChange={(e) => onChange(key, e.target.value)}
+                    placeholder={placeholder}
                     className={`mt-1.5 w-full rounded-lg border bg-white px-3 py-2.5 text-sm text-text-primary outline-none transition placeholder:text-text-secondary/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 ${
                       errors[key] ? "border-error" : "border-border"
                     }`}

@@ -1,3 +1,4 @@
+import { HashLink } from "../HashLink";
 import { HomeContentSection } from "../HomeContentSection";
 
 const IMAGES = {
@@ -35,7 +36,16 @@ export function ConsultarRfcContent() {
           fiscales. Cada factura debe incluir un código RFC válido; de lo contrario, el documento no se considera
           legalmente válido.
         </p>
-        <p>¿Por qué las empresas y los particulares calcular RFC? Esta es la situación:</p>
+        <p>
+          ¿Por qué las empresas y los particulares{" "}
+          <HashLink
+            sectionId="generator"
+            className="font-medium text-emerald-700 underline-offset-2 hover:underline"
+          >
+            calcular RFC?
+          </HashLink>{" "}
+          Esta es la situación:
+        </p>
         <ul>
           <li>
             Sin un RFC activo, los trabajadores autónomos y las empresas no pueden emitir ni recibir legalmente una

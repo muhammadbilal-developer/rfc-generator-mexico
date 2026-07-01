@@ -10,9 +10,9 @@ Esta calculadora genera el **RFC de persona física con homoclave y dígito veri
 
 | Campo interno (`RfcInput`) | Etiqueta en formulario | Obligatorio |
 | --- | --- | --- |
-| `apellidoPaterno` | Apellido paterno | Sí |
-| `apellidoMaterno` | Apellido materno | No |
 | `nombre` | Nombre(s) | Sí |
+| `apellidoPaterno` | Primer apellido | Sí |
+| `apellidoMaterno` | Segundo apellido (opcional) | No |
 | `fechaNacimiento` | Fecha de nacimiento (`YYYY-MM-DD`) | Sí |
 
 **Páginas que usan la misma lógica** (componente compartido `RfcGeneratorCard` + motor `lib/rfcEngine.ts`):
@@ -55,12 +55,12 @@ El **estándar de facto** para persona física sin CURP es exactamente **cuatro 
 
 ### Etiquetas adoptadas
 
-Se alinearon las etiquetas del formulario con el español usado en calculamx.com, mi-rfc.com.mx y rdcontadores.com:
+Se alinearon las etiquetas con mi-rfc.com.mx y calculadoras similares (orden y redacción):
 
-- `Apellido paterno` — Obligatorio  
-- `Apellido materno` — Opcional si solo tiene un apellido  
-- `Nombre(s)` — Ej: Juan, María de los Ángeles  
-- `Fecha de nacimiento` — Obligatorio  
+- `Nombre(s)` — placeholder: *Tu(s) nombre(s)*
+- `Primer apellido` — placeholder: *Tu primer apellido*
+- `Segundo apellido (opcional)` — placeholder: *Tu segundo apellido*
+- `Fecha de nacimiento`
 
 Los **nombres internos** (`apellidoPaterno`, `apellidoMaterno`, `nombre`, `fechaNacimiento`) se mantienen en español camelCase por coherencia con el código y el esquema Zod.
 
@@ -170,9 +170,9 @@ Los **nombres internos** (`apellidoPaterno`, `apellidoMaterno`, `nombre`, `fecha
 
 | Campo | Regla Zod | Mensaje (español) |
 | --- | --- | --- |
-| `apellidoPaterno` | `min(1)` | El apellido paterno es obligatorio. |
+| `apellidoPaterno` | `min(1)` | El primer apellido es obligatorio. |
 | `apellidoMaterno` | opcional | — |
-| `nombre` | `min(1)` | El nombre es obligatorio. |
+| `nombre` | `min(1)` | Ingrese su(s) nombre(s). |
 | `fechaNacimiento` | fecha válida, no futura | La fecha de nacimiento debe ser válida y no puede ser futura. |
 
 ---

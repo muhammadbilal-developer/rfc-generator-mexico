@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 export const rfcFormSchema = z.object({
-  apellidoPaterno: z.string().trim().min(1, "El apellido paterno es obligatorio."),
+  apellidoPaterno: z.string().trim().min(1, "El primer apellido es obligatorio."),
   apellidoMaterno: z.string().trim().optional(),
-  nombre: z.string().trim().min(1, "El nombre es obligatorio."),
+  nombre: z.string().trim().min(1, "Ingrese su(s) nombre(s)."),
   fechaNacimiento: z
     .string()
     .min(1, "La fecha de nacimiento es obligatoria.")

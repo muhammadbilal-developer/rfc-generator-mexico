@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ROUTES } from "@/lib/routes";
 import { HomeContentSection } from "./HomeContentSection";
 
 const IMAGES = {
@@ -28,8 +30,14 @@ export function HomeContent() {
         </p>
         <p>
           <strong>Calcula tu RFC</strong> de forma rápida y sencilla. Utiliza el formato SAT estándar para la
-          generación, incluyendo el <strong>RFC con homoclave</strong>, en tan solo unos segundos. El resultado obtenido
-          le ayuda con varias tareas, como:
+          generación, incluyendo el{" "}
+          <Link
+            href={ROUTES.rfcConHomoclave}
+            className="font-semibold text-emerald-700 underline-offset-2 hover:underline"
+          >
+            RFC con homoclave
+          </Link>
+          , en tan solo unos segundos. El resultado obtenido le ayuda con varias tareas, como:
         </p>
         <ul>
           <li>

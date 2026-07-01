@@ -1,3 +1,4 @@
+import { HashLink } from "../HashLink";
 import { HomeContentSection } from "../HomeContentSection";
 
 const IMAGES = {
@@ -24,7 +25,14 @@ export function RfcConHomoclaveContent() {
         <p>
           El RFC es el número de identificación fiscal oficial asignado a toda persona que percibe ingresos. Sin embargo,
           existe una diferencia entre el RFC básico y el RFC con un homoclave. Un RFC básico consta únicamente de los
-          primeros 10 caracteres. Puedes calcular RFC utilizando tu nombre y fecha de nacimiento.
+          primeros 10 caracteres. Puedes{" "}
+          <HashLink
+            sectionId="generator"
+            className="font-medium text-emerald-700 underline-offset-2 hover:underline"
+          >
+            calcular RFC
+          </HashLink>{" "}
+          utilizando tu nombre y fecha de nacimiento.
         </p>
         <h3>Comprender El RFC Completo</h3>
         <p>
