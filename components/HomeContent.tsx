@@ -2,6 +2,8 @@ import Link from "next/link";
 import { SECTION_IDS } from "@/lib/hashNav";
 import { ROUTES } from "@/lib/routes";
 import { HomeContentSection } from "./HomeContentSection";
+import { ManualVsCalculatorCards } from "./ManualVsCalculatorCards";
+import { RfcInputFieldsGrid } from "./RfcInputFieldsGrid";
 
 const IMAGES = {
   queEs: "/images/home/que-es-calculadora-rfc.webp",
@@ -107,26 +109,7 @@ export function HomeContent() {
           personal, esta se procesa mediante una lógica estandarizada. Esta identifica los caracteres correctos de lo
           siguiente:
         </p>
-        <ul>
-          <li>
-            <strong>Apellido paterno</strong>
-          </li>
-          <li>
-            <strong>Apellido materno</strong>
-          </li>
-          <li>
-            Dado <strong>nombre</strong>
-          </li>
-          <li>
-            <strong>razón social</strong>
-          </li>
-          <li>
-            <strong>fecha de constitución</strong>
-          </li>
-          <li>
-            <strong>persona moral.</strong>
-          </li>
-        </ul>
+        <RfcInputFieldsGrid />
         <p>
           La fecha de nacimiento se agrega según el <strong>código tributario federal</strong> especificación. Todo el
           proceso de <strong>generación de RFC</strong> es automatizado. No se requiere ninguna acción manual por su
@@ -210,27 +193,7 @@ export function HomeContent() {
           Algunas personas intentan calcular un RFC manualmente utilizando guías SAT. Si bien es posible, el cálculo
           manual es lento y presenta mayores probabilidades de error. Aquí puede ver una comparación entre ambos métodos.
         </p>
-        <h3>Cálculo Manual:</h3>
-        <ul>
-          <li>Cada cálculo tarda entre 15 y 30 minutos.</li>
-          <li>
-            La tasa de error es alta, y los errores más comunes se encuentran en el nombre o en las reglas de homoclave.
-          </li>
-          <li>Para realizar los cálculos es necesario comprender las reglas de formato RFC.</li>
-          <li>
-            No resulta práctico para el equipo de recursos humanos o de nóminas porque requiere tiempo adicional.
-          </li>
-        </ul>
-        <h3>Desde Nuestra Calculadora RFC:</h3>
-        <ul>
-          <li>Obtendrás el resultado en menos de 30 segundos.</li>
-          <li>
-            Los resultados son precisos, ya que la lógica automatizada aplica todas las reglas correctamente. No se
-            requieren conocimientos técnicos para usar la calculadora.
-          </li>
-          <li>Generar múltiples RFCS sin restricciones</li>
-          <li>Es rápido y gratuito.</li>
-        </ul>
+        <ManualVsCalculatorCards />
         <p>
           El método manual tenía sentido antes de cualquier herramienta digital. Hoy en día, si necesitas saber{" "}
           <strong>cómo calcular un RFC</strong> de forma precisa y rápida, utilice un sistema automatizado.{" "}
