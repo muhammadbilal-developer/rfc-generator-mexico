@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { ConsultarRfcTool } from "@/components/consultar-rfc/ConsultarRfcTool";
-import { ConsultarRfcContent } from "@/components/consultar-rfc/ConsultarRfcContent";
-import { ConsultarRfcFaq } from "@/components/consultar-rfc/ConsultarRfcFaq";
 import { ConsultarRfcHero } from "@/components/consultar-rfc/ConsultarRfcHero";
 import { JsonLd } from "@/components/JsonLd";
 import { consultarRfcFaqItems } from "@/lib/consultarRfcFaq";
@@ -13,6 +12,14 @@ import {
 } from "@/lib/jsonLd";
 import { pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
+
+const ConsultarRfcContent = dynamic(() =>
+  import("@/components/consultar-rfc/ConsultarRfcContent").then((mod) => mod.ConsultarRfcContent),
+);
+
+const ConsultarRfcFaq = dynamic(() =>
+  import("@/components/consultar-rfc/ConsultarRfcFaq").then((mod) => mod.ConsultarRfcFaq),
+);
 
 export const metadata: Metadata = {
   ...pageCanonical(ROUTES.consultarRfc),

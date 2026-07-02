@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Faq } from "@/components/Faq";
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/Hero";
-import { HomeContent } from "@/components/HomeContent";
 import { JsonLd } from "@/components/JsonLd";
 import { faqItems } from "@/lib/faqContent";
 import {
@@ -13,6 +12,12 @@ import {
 } from "@/lib/jsonLd";
 import { pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
+
+const HomeContent = dynamic(() =>
+  import("@/components/HomeContent").then((mod) => mod.HomeContent),
+);
+
+const Faq = dynamic(() => import("@/components/Faq").then((mod) => mod.Faq));
 
 export const metadata: Metadata = {
   ...pageCanonical(ROUTES.home),

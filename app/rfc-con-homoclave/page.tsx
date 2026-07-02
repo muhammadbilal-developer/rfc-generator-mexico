@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { JsonLd } from "@/components/JsonLd";
-import { RfcConHomoclaveContent } from "@/components/rfc-con-homoclave/RfcConHomoclaveContent";
-import { RfcConHomoclaveFaq } from "@/components/rfc-con-homoclave/RfcConHomoclaveFaq";
 import { RfcConHomoclaveHero } from "@/components/rfc-con-homoclave/RfcConHomoclaveHero";
 import { rfcConHomoclaveFaqItems } from "@/lib/rfcConHomoclaveFaq";
 import {
@@ -12,6 +11,14 @@ import {
 } from "@/lib/jsonLd";
 import { pageCanonical } from "@/lib/metadata";
 import { ROUTES } from "@/lib/routes";
+
+const RfcConHomoclaveContent = dynamic(() =>
+  import("@/components/rfc-con-homoclave/RfcConHomoclaveContent").then((mod) => mod.RfcConHomoclaveContent),
+);
+
+const RfcConHomoclaveFaq = dynamic(() =>
+  import("@/components/rfc-con-homoclave/RfcConHomoclaveFaq").then((mod) => mod.RfcConHomoclaveFaq),
+);
 
 export const metadata: Metadata = {
   ...pageCanonical(ROUTES.rfcConHomoclave),

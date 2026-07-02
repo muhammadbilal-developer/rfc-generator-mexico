@@ -48,10 +48,10 @@ function ManualVsFeatureCard({ title, points, index }: FeatureCardProps) {
       />
 
       <div className="relative z-10 flex h-full flex-col px-4 py-5 sm:px-6 sm:py-6">
-        <h3 className="text-[1.05rem] font-bold leading-snug text-[#0b6f55] sm:text-lg">{title}</h3>
+        <h3 className="text-[1.05rem] font-bold leading-snug text-text-primary sm:text-lg">{title}</h3>
         <ul className="mt-3 space-y-2.5 sm:mt-3.5">
           {points.map((point) => (
-            <li key={point} className="flex items-start gap-2.5 text-sm leading-relaxed text-[#3f4a54] sm:text-[0.9375rem]">
+            <li key={point} className="flex items-start gap-2.5 text-sm leading-relaxed text-text-secondary sm:text-[0.9375rem]">
               <span
                 aria-hidden
                 className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0b7a5d] text-white shadow-sm"

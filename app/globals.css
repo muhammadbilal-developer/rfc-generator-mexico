@@ -6,8 +6,8 @@
   --color-button: #059669;
   --color-hover: #047857;
   --color-accent: #8b5cf6;
-  --color-text-primary: #111827;
-  --color-text-secondary: #6b7280;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #374151;
   --color-border: #e5e7eb;
   --color-success: #16a34a;
   --color-error: #dc2626;
@@ -40,6 +40,13 @@
 @media (min-width: 768px) {
   :root {
     --header-offset: 5.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --color-text-primary: #0a0f1a;
+    --color-text-secondary: #1f2937;
   }
 }
 
@@ -169,6 +176,21 @@ h3 {
 .legal-prose li {
   text-align: left;
   word-spacing: normal;
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 1024px) {
+  .legal-prose p,
+  .legal-prose li {
+    color: var(--color-text-secondary);
+  }
+
+  .bg-section-mint .text-text-secondary,
+  .bg-section-sky .text-text-secondary,
+  .bg-section-pearl .text-text-secondary,
+  .bg-section-fog .text-text-secondary {
+    color: var(--color-text-secondary);
+  }
 }
 
 .legal-prose p,

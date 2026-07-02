@@ -4,7 +4,6 @@ import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiCheck, FiDownload, FiShare2 } from "react-icons/fi";
 import type { RfcPdfInput } from "@/lib/rfcPdf";
-import { downloadRfcPdf } from "@/lib/rfcPdf";
 import type { RfcResult } from "@/lib/rfcEngine";
 import { getGeneratorUrl, getSiteDisplayUrl, getSiteUrl, SITE_NAME } from "@/lib/site";
 
@@ -49,6 +48,7 @@ export function RfcShareActions({ result, form }: RfcShareActionsProps) {
   const handlePdf = async () => {
     setBusy("pdf");
     try {
+      const { downloadRfcPdf } = await import("@/lib/rfcPdf");
       await downloadRfcPdf({ ...form, result });
     } finally {
       setBusy(null);

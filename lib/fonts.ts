@@ -25,4 +25,6 @@ export const inter = localFont({
   ],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
+  fallback: ["system-ui", "Segoe UI", "Arial", "sans-serif"],
 });
