@@ -4,6 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HashNavFix } from "@/components/HashNavFix";
+import { GOOGLE_ANALYTICS_ID, GOOGLE_SITE_VERIFICATION } from "@/lib/analytics";
 import { siteIcons } from "@/lib/favicons";
 import { inter } from "@/lib/fonts";
 import { SITE_URL } from "@/lib/site";
@@ -32,8 +33,10 @@ export const metadata: Metadata = {
     images: ["/og-image.svg"],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-    other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ?? "" },
+    google: GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
   },
 };
 
@@ -49,7 +52,7 @@ export default function RootLayout({
         <Header />
         <div className="flex flex-1 flex-col">{children}</div>
         <Footer />
-        {process.env.NEXT_PUBLIC_GA_ID ? <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} /> : null}
+        <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
         {process.env.NEXT_PUBLIC_CLARITY_ID ? (
           <Script id="clarity" strategy="afterInteractive">
             {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
