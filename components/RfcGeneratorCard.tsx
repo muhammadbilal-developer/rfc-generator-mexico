@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import {
   FiEdit3,
@@ -13,8 +14,12 @@ import { getRfcGeneratorCopy, type RfcGeneratorVariant } from "@/lib/rfcGenerato
 import { rfcFormSchema } from "@/lib/schema";
 import { CopyRfcButton } from "./CopyRfcButton";
 import { PrimaryButton } from "./PrimaryButton";
-import { RfcShareActions } from "./RfcShareActions";
 import { SmoothViewToggle } from "./SmoothPanels";
+
+const RfcShareActions = dynamic(
+  () => import("./RfcShareActions").then((mod) => mod.RfcShareActions),
+  { ssr: false },
+);
 
 type FormState = {
   apellidoPaterno: string;

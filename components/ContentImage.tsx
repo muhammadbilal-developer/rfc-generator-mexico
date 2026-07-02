@@ -10,22 +10,24 @@ type ContentImageProps = {
   aspectRatio?: "4/3" | "3/4" | "auto";
 };
 
+const SECTION_IMAGE_SIZES = "(max-width: 640px) 360px, (max-width: 1024px) 480px, 520px";
+
 const ASPECT = {
   "4/3": {
-    width: 960,
-    height: 720,
+    width: 640,
+    height: 480,
     wrapperClass: "p-3 sm:p-4",
     imageClass: "h-auto max-h-[420px] w-full object-contain object-center",
   },
   "3/4": {
-    width: 1200,
-    height: 1312,
+    width: 720,
+    height: 960,
     wrapperClass: "p-0",
     imageClass: "block h-auto w-full",
   },
   auto: {
-    width: 960,
-    height: 720,
+    width: 640,
+    height: 480,
     wrapperClass: "p-2 sm:p-3",
     imageClass: "block h-auto w-full object-contain",
   },
@@ -37,7 +39,7 @@ export function ContentImage({
   alt,
   title,
   priority = false,
-  sizes = "(max-width: 1024px) 100vw, 50vw",
+  sizes = SECTION_IMAGE_SIZES,
   className = "",
   aspectRatio = "4/3",
 }: ContentImageProps) {
@@ -45,7 +47,7 @@ export function ContentImage({
 
   return (
     <div
-      className={`overflow-hidden rounded-xl border border-emerald-100/80 bg-white shadow-[0_16px_40px_rgba(16,185,129,0.1)] ${aspect.wrapperClass} ${className}`}
+      className={`overflow-hidden rounded-xl border border-emerald-100/80 bg-white shadow-[0_16px_40px_rgba(16,185,129,0.10)] ${aspect.wrapperClass} ${className}`}
     >
       <Image
         src={src}

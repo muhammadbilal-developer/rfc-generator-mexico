@@ -8,11 +8,6 @@ export const inter = localFont({
       style: "normal",
     },
     {
-      path: "../public/fonts/inter-latin-500-normal.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
       path: "../public/fonts/inter-latin-600-normal.woff2",
       weight: "600",
       style: "normal",

@@ -71,6 +71,7 @@ export function HomeContentSection({
               alt={imageAlt}
               title={imageTitle ?? imageAlt}
               aspectRatio={compactImage ? "auto" : imageAspectRatio}
+              sizes="(max-width: 640px) 360px, (max-width: 1024px) 480px, 520px"
             />
           </AnimatedReveal>
         </div>
