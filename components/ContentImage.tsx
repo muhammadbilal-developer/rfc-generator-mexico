@@ -7,7 +7,7 @@ type ContentImageProps = {
   priority?: boolean;
   sizes?: string;
   className?: string;
-  aspectRatio?: "4/3" | "3/4";
+  aspectRatio?: "4/3" | "3/4" | "auto";
 };
 
 const ASPECT = {
@@ -22,6 +22,12 @@ const ASPECT = {
     height: 1312,
     wrapperClass: "p-0",
     imageClass: "block h-auto w-full",
+  },
+  auto: {
+    width: 960,
+    height: 720,
+    wrapperClass: "p-2 sm:p-3",
+    imageClass: "block h-auto w-full object-contain",
   },
 } as const;
 

@@ -1,13 +1,8 @@
 /** Section ids used for in-page navigation (homepage). */
 export const SECTION_IDS = {
   generator: "generator",
-  queEsCalculadora: "que-es-calculadora-rfc",
   comoFunciona: "como-funciona",
-  quienPuedeUsar: "quien-puede-usar",
-  faq: "faq",
 } as const;
-
-export type SectionId = (typeof SECTION_IDS)[keyof typeof SECTION_IDS];
 
 export function normalizeHash(): string | null {
   if (typeof window === "undefined") return null;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 /** Favicon assets in /public — do not generate; update files in public only. */
-export const FAVICON_PATHS = {
+const FAVICON_PATHS = {
   svg: "/favicon.svg",
   png96: "/favicon-96x96.png",
   apple: "/apple-touch-icon.png",

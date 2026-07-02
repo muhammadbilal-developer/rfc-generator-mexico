@@ -4,8 +4,9 @@ import { SOCIAL_PROFILE_URLS } from "./socialLinks";
 import { SITE_LOGO_PATH, SITE_URL } from "./site";
 
 export { SITE_URL };
-export const SITE_NAME = "CalcularRFC";
-export const SITE_LEGAL_NAME = "RFC Generator Mexico";
+
+const SITE_NAME = "CalcularRFC";
+const SITE_LEGAL_NAME = "RFC Generator Mexico";
 
 type BreadcrumbItem = { name: string; path: string };
 

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { HomeContentSection } from "../HomeContentSection";
+import { ContentCard } from "../content-cards/ContentCard";
+import { ContentCardSection, ContentCardsGrid } from "../content-cards/ContentCardSection";
 import { SAT_WEBSITE_URL } from "@/lib/externalLinks";
 import { ROUTES } from "@/lib/routes";
 
@@ -134,64 +136,68 @@ export function RfcConHomoclaveContent() {
         </ul>
       </HomeContentSection>
 
-      <HomeContentSection
+      <ContentCardSection
         id="donde-encontrar-homoclave"
         title="¿Dónde puedes encontrar tu RFC con homoclave oficial?"
         image={IMAGES.dondeEncontrar}
         imageAlt="Dónde encontrar tu RFC con homoclave oficial"
         sectionIndex={4}
-        imagePosition="right"
-        ctaSectionId="generator"
+        intro={
+          <p>
+            Hay varias maneras de encontrar tu RFC oficial. Además, puedes{" "}
+            <strong>descargar RFC con Homoclave</strong> Sin necesidad de visitar una oficina del SAT. A continuación se
+            presenta la explicación:
+          </p>
+        }
       >
-        <p>
-          Hay varias maneras de encontrar tu RFC oficial. Además, puedes{" "}
-          <strong>descargar RFC con Homoclave</strong> Sin necesidad de visitar una oficina del SAT. A continuación se
-          presenta la explicación:
-        </p>
-        <h3>Constancia De Situación Fiscal</h3>
-        <p>Es un documento oficial emitido por SAT. Muestra varias cosas como:</p>
-        <ul>
-          <li>RFC y CURP completos</li>
-          <li>Tu dirección</li>
-          <li>Tu régimen tributario registrado</li>
-          <li>Tu código postal.</li>
-        </ul>
-        <p>
-          Además, puedes generar y descargar tu certificado tributario de forma gratuita a través del{" "}
-          <a
-            href={SAT_WEBSITE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-emerald-700 underline-offset-2 hover:underline"
-          >
-            sitio web de la SAT
-          </a>
-          . Solo necesitas usar tu RFC y contraseña. El proceso tarda unos minutos y el documento se genera como un
-          archivo PDF descargable.
-        </p>
-        <h3>Servicios En Línea Del SAT</h3>
-        <p>
-          Si tienes una cuenta SAT activa, puedes iniciar sesión en cualquier momento y consultar tu RFC. El portal te
-          permite{" "}
-          <Link href={ROUTES.consultarRfc} className="font-semibold text-emerald-700 underline-offset-2 hover:underline">
-            validar tu RFC
-          </Link>
-          . En algunos casos, podrás usar tu CURP para recuperar tu RFC si la olvidas.
-        </p>
-        <p>
-          La herramienta de validación en línea del SAT acepta su CURP de 18 caracteres y devuelve su RFC completo,
-          incluida la homoclave. Puedes comprobar lo <strong>RFC con CURP</strong> a través de la aplicación móvil SAT.
-        </p>
-        <h3>Documento Fiscal Y Factura:</h3>
-        <p>En sus numerosos documentos, su RFC ya se menciona. Aparece en:</p>
-        <ul>
-          <li>CFDIS (factura electrónica)</li>
-          <li>recibos de nómina</li>
-          <li>Factura fiscal</li>
-          <li>Documentos de empleo</li>
-          <li>Registros relacionados con IMSS</li>
-        </ul>
-      </HomeContentSection>
+        <ContentCardsGrid>
+          <ContentCard title="Constancia De Situación Fiscal">
+            <p>Es un documento oficial emitido por SAT. Muestra varias cosas como:</p>
+            <ul>
+              <li>RFC y CURP completos</li>
+              <li>Tu dirección</li>
+              <li>Tu régimen tributario registrado</li>
+              <li>Tu código postal.</li>
+            </ul>
+            <p>
+              Además, puedes generar y descargar tu certificado tributario de forma gratuita a través del{" "}
+              <a
+                href={SAT_WEBSITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                sitio web de la SAT
+              </a>
+              . Solo necesitas usar tu RFC y contraseña. El proceso tarda unos minutos y el documento se genera como un
+              archivo PDF descargable.
+            </p>
+          </ContentCard>
+          <ContentCard title="Servicios En Línea Del SAT">
+            <p>
+              Si tienes una cuenta SAT activa, puedes iniciar sesión en cualquier momento y consultar tu RFC. El portal te
+              permite{" "}
+              <Link href={ROUTES.consultarRfc}>
+                validar tu RFC
+              </Link>
+              . En algunos casos, podrás usar tu CURP para recuperar tu RFC si la olvidas.
+            </p>
+            <p>
+              La herramienta de validación en línea del SAT acepta su CURP de 18 caracteres y devuelve su RFC completo,
+              incluida la homoclave. Puedes comprobar lo <strong>RFC con CURP</strong> a través de la aplicación móvil SAT.
+            </p>
+          </ContentCard>
+          <ContentCard title="Documento Fiscal Y Factura:">
+            <p>En sus numerosos documentos, su RFC ya se menciona. Aparece en:</p>
+            <ul>
+              <li>CFDIS (factura electrónica)</li>
+              <li>recibos de nómina</li>
+              <li>Factura fiscal</li>
+              <li>Documentos de empleo</li>
+              <li>Registros relacionados con IMSS</li>
+            </ul>
+          </ContentCard>
+        </ContentCardsGrid>
+      </ContentCardSection>
 
       <HomeContentSection
         id="particulares-empresas"

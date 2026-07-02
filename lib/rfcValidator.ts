@@ -1,8 +1,8 @@
 import { ANEXO_III_MAP } from "./constants";
 
-export type RfcPersonType = "fisica" | "moral";
+type RfcPersonType = "fisica" | "moral";
 
-export type RfcValidationResult = {
+type RfcValidationResult = {
   valid: boolean;
   normalized: string;
   personType: RfcPersonType | null;

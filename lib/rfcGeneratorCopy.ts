@@ -1,6 +1,6 @@
 export type RfcGeneratorVariant = "home" | "consultar-rfc" | "rfc-con-homoclave";
 
-export type RfcGeneratorCopy = {
+type RfcGeneratorCopy = {
   cardTitle: string;
   cardSubtitle: string;
   resultTitle: string;
@@ -11,7 +11,7 @@ export type RfcGeneratorCopy = {
   sectionDescription?: string;
 };
 
-export const RFC_GENERATOR_COPY: Record<RfcGeneratorVariant, RfcGeneratorCopy> = {
+const RFC_GENERATOR_COPY: Record<RfcGeneratorVariant, RfcGeneratorCopy> = {
   home: {
     cardTitle: "Calcular RFC",
     cardSubtitle: "Persona física · Algoritmo público del SAT",

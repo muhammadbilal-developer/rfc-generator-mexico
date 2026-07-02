@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { HomeContentSection } from "../HomeContentSection";
+import { ContentCard } from "../content-cards/ContentCard";
+import { ContentCardSection, ContentCardsGrid } from "../content-cards/ContentCardSection";
 import { ROUTES } from "@/lib/routes";
 
 const IMAGES = {
@@ -58,97 +60,108 @@ export function ConsultarRfcContent() {
         </ul>
       </HomeContentSection>
 
-      <HomeContentSection
+      <ContentCardSection
         id="como-se-estructura-rfc"
         title="Cómo Se Estructura El RFC"
         image={IMAGES.estructura}
         imageAlt="Cómo se estructura el RFC en México"
         sectionIndex={1}
-        imagePosition="left"
-        ctaSectionId="generator"
+        intro={
+          <p>
+            El RFC de una persona física tiene 13 caracteres. Consta de tres partes distintas. La primera es el segmento
+            del nombre, la segunda las fecha de nacimiento y la tercera son 3 caracteres alfanuméricos únicos
+            proporcionados por el SAT. A continuación, se ofrece una explicación más detallada del cálculo:
+          </p>
+        }
       >
-        <p>
-          El RFC de una persona física tiene 13 caracteres. Consta de tres partes distintas. La primera es el segmento
-          del nombre, la segunda las fecha de nacimiento y la tercera son 3 caracteres alfanuméricos únicos
-          proporcionados por el SAT. A continuación, se ofrece una explicación más detallada del cálculo:
-        </p>
-        <h3>Ejemplo:</h3>
-        <p>
-          Supongamos que el nombre es López Hernández Juan, nacido el 14/04/1980 ; la estructura RFC debería ser así:
-        </p>
-        <h3>Segmento De Caracteres 1-4</h3>
-        <ol className="ml-5 list-decimal space-y-1">
-          <li>Primera letra del apellido paterno: L</li>
-          <li>Primera vocal interna del apellido paterno: O</li>
-          <li>Primeras letras del apellido materno: H</li>
-          <li>Primera letra del nombre: J</li>
-        </ol>
-        <h3>Caracteres 5-10, Fecha De Nacimiento (AAMMDD)</h3>
-        <ul>
-          <li>Año: 80</li>
-          <li>Mes: 04</li>
-          <li>Días: 14</li>
-        </ul>
-        <h3>Caracteres 11-13</h3>
-        <p>
-          Supongamos que es XX0. Entonces, el{" "}
-          <Link
-            href={ROUTES.rfcConHomoclave}
-            className="font-semibold text-emerald-700 underline-offset-2 hover:underline"
-          >
-            RFC con homoclave
-          </Link>{" "}
-          es LOHJ800414XX0. Para las entidades legales, un RFC tiene 12 caracteres: 3 letras del nombre de la empresa,
-          la fecha de fundación en formato AA/MM/DD y un homoclave de 3 caracteres.
-        </p>
-      </HomeContentSection>
+        <ContentCardsGrid>
+          <ContentCard title="Ejemplo:">
+            <p>
+              Supongamos que el nombre es López Hernández Juan, nacido el 14/04/1980 ; la estructura RFC debería ser así:
+            </p>
+          </ContentCard>
+          <ContentCard title="Segmento De Caracteres 1-4">
+            <ol className="ml-5 list-decimal space-y-1">
+              <li>Primera letra del apellido paterno: L</li>
+              <li>Primera vocal interna del apellido paterno: O</li>
+              <li>Primeras letras del apellido materno: H</li>
+              <li>Primera letra del nombre: J</li>
+            </ol>
+          </ContentCard>
+          <ContentCard title="Caracteres 5-10, Fecha De Nacimiento (AAMMDD)">
+            <ul>
+              <li>Año: 80</li>
+              <li>Mes: 04</li>
+              <li>Días: 14</li>
+            </ul>
+          </ContentCard>
+          <ContentCard title="Caracteres 11-13">
+            <p>
+              Supongamos que es XX0. Entonces, el{" "}
+              <Link
+                href={ROUTES.rfcConHomoclave}
+                className="font-semibold text-emerald-700 underline-offset-2 hover:underline"
+              >
+                RFC con homoclave
+              </Link>{" "}
+              es LOHJ800414XX0. Para las entidades legales, un RFC tiene 12 caracteres: 3 letras del nombre de la empresa,
+              la fecha de fundación en formato AA/MM/DD y un homoclave de 3 caracteres.
+            </p>
+          </ContentCard>
+        </ContentCardsGrid>
+      </ContentCardSection>
 
-      <HomeContentSection
+      <ContentCardSection
         id="como-calcular-rfc"
         title="Cómo Calcular RFC"
         image={IMAGES.calcular}
         imageAlt="Cómo calcular RFC según reglas SAT"
         sectionIndex={2}
-        imagePosition="right"
-        ctaSectionId="generator"
       >
-        <p>
-          Nuestra calculadora sigue la misma regla publicada por el SAT; si lo haces manualmente, existe riesgo de error,
-          especialmente en caracteres y nombres. Por lo tanto, nuestra <strong>RFC gratis l</strong>a calculadora, es la
-          opción más segura.
-        </p>
-        <p>En un manual, debes seguir estos pasos:</p>
-        <ul>
-          <li>
-            Toma la primera letra y la primera vocal interna de tu apellido paterno, luego la primera letra de tu apellido
-            materno. Después, la primera letra de tu nombre. Es importante recordar que si el nombre empieza con
-            &quot;María&quot; o &quot;José&quot; en un nombre compuesto, se usa el segundo nombre.
-          </li>
-          <li>
-            SAT verifica las cuatro letras resultantes de una lista restringida. Si la letra está presente, la segunda
-            letra se reemplaza por una X. Nuestra calculadora también aplica este filtro.
-          </li>
-          <li>
-            Utilice el formato AAMMDD. Recuerde que las fechas siempre utilizan dos dígitos para el año, el mes y el día,
-            incluyendo los ceros.
-          </li>
-          <li>
-            El homoclave de 3 caracteres es generado por SAT utilizando su sistema interno, por lo que no se puede
-            calcular con exactitud.
-          </li>
-        </ul>
-        <h3>Reglas De Cálculo Comunes Que Debes Conocer:</h3>
-        <ul>
-          <li>Las vocales acentuadas (á, é, í, ó, ú) se tratan como vocales normales.</li>
-          <li>En la generación de RFC, N se suele convertir en X.</li>
-          <li>En los apellidos compuestos, ignora los artículos como de, del, la, los,</li>
-          <li>Si solo se menciona un apellido, los apellidos que falten se sustituirán por una X.</li>
-        </ul>
-        <p>
-          Utilice nuestro <strong>RFC en línea</strong> calculadora que cubre todos estos aspectos automáticamente.
-          Simplemente ingrese su nombre legal tal como aparece en su certificado de nacimiento y vea los resultados.
-        </p>
-      </HomeContentSection>
+        <ContentCardsGrid>
+          <ContentCard>
+            <p>
+              Nuestra calculadora sigue la misma regla publicada por el SAT; si lo haces manualmente, existe riesgo de error,
+              especialmente en caracteres y nombres. Por lo tanto, nuestra <strong>RFC gratis l</strong>a calculadora, es la
+              opción más segura.
+            </p>
+            <p>En un manual, debes seguir estos pasos:</p>
+            <ul>
+              <li>
+                Toma la primera letra y la primera vocal interna de tu apellido paterno, luego la primera letra de tu apellido
+                materno. Después, la primera letra de tu nombre. Es importante recordar que si el nombre empieza con
+                &quot;María&quot; o &quot;José&quot; en un nombre compuesto, se usa el segundo nombre.
+              </li>
+              <li>
+                SAT verifica las cuatro letras resultantes de una lista restringida. Si la letra está presente, la segunda
+                letra se reemplaza por una X. Nuestra calculadora también aplica este filtro.
+              </li>
+              <li>
+                Utilice el formato AAMMDD. Recuerde que las fechas siempre utilizan dos dígitos para el año, el mes y el día,
+                incluyendo los ceros.
+              </li>
+              <li>
+                El homoclave de 3 caracteres es generado por SAT utilizando su sistema interno, por lo que no se puede
+                calcular con exactitud.
+              </li>
+            </ul>
+          </ContentCard>
+          <ContentCard title="Reglas De Cálculo Comunes Que Debes Conocer:">
+            <ul>
+              <li>Las vocales acentuadas (á, é, í, ó, ú) se tratan como vocales normales.</li>
+              <li>En la generación de RFC, N se suele convertir en X.</li>
+              <li>En los apellidos compuestos, ignora los artículos como de, del, la, los,</li>
+              <li>Si solo se menciona un apellido, los apellidos que falten se sustituirán por una X.</li>
+            </ul>
+          </ContentCard>
+          <ContentCard>
+            <p>
+              Utilice nuestro <strong>RFC en línea</strong> calculadora que cubre todos estos aspectos automáticamente.
+              Simplemente ingrese su nombre legal tal como aparece en su certificado de nacimiento y vea los resultados.
+            </p>
+          </ContentCard>
+        </ContentCardsGrid>
+      </ContentCardSection>
 
       <HomeContentSection
         id="sacar-rfc-curp"
@@ -185,48 +198,54 @@ export function ConsultarRfcContent() {
         </p>
       </HomeContentSection>
 
-      <HomeContentSection
+      <ContentCardSection
         id="como-obtener-rfc-sat"
         title="Cómo Obtener RFC Del SAT"
         image={IMAGES.obtenerSat}
         imageAlt="Cómo obtener RFC del SAT"
         sectionIndex={4}
-        imagePosition="right"
-        ctaSectionId="generator"
+        intro={
+          <p>
+            La calculadora te ayuda a estimar y <strong>sacar RFC en línea</strong>. Pero el RFC oficial que obtuviste del
+            SAT. Así es como funciona el proceso en el mundo en línea o presencial.
+          </p>
+        }
       >
-        <p>
-          La calculadora te ayuda a estimar y <strong>sacar RFC en línea</strong>. Pero el RFC oficial que obtuviste del
-          SAT. Así es como funciona el proceso en el mundo en línea o presencial.
-        </p>
-        <h3>Inscripción A Través Del Portal En Línea:</h3>
-        <p>
-          Visite el sitio web: sat.gob.mx y diríjase a la sección de registro. A partir de los datos individuales, el
-          portal en línea gestiona la preinscripción mediante CURP.
-        </p>
-        <h3>Si Es Necesario, Visite Una Oficina De SAT En Persona:</h3>
-        <p>
-          Si la inscripción requiere asistencia presencial para empresas o ciudadanos extranjeros, solicite una cita en
-          la oficina de SAT más cercana.
-        </p>
-        <h3>Documentos Necesarios Para Procesar La RFC</h3>
-        <p>
-          Para una <strong>persona física,</strong>Estos documentos son obligatorios.
-        </p>
-        <ul>
-          <li>Certificado original</li>
-          <li>Pasaporte válido.</li>
-          <li>Impresión de CURP</li>
-          <li>Comprobante de domicilio</li>
-          <li>Documento de identidad oficial con fotografía.</li>
-          <li>Los ciudadanos extranjeros necesitan documentos de inmigración.</li>
-        </ul>
-        <h3>Reciba Su RFC Y Certificado De Situación Fiscal</h3>
-        <p>
-          Después <strong>inscripción al RFC</strong>, el SAT emite su certificación tributaria, un PDF de su RFC activo,
-          registrado <strong>régimen fiscal,</strong>y domicilio registrado. Puede que lo necesite para trabajos, bancos
-          o clientes.
-        </p>
-      </HomeContentSection>
+        <ContentCardsGrid>
+          <ContentCard title="Inscripción A Través Del Portal En Línea:">
+            <p>
+              Visite el sitio web: sat.gob.mx y diríjase a la sección de registro. A partir de los datos individuales, el
+              portal en línea gestiona la preinscripción mediante CURP.
+            </p>
+          </ContentCard>
+          <ContentCard title="Si Es Necesario, Visite Una Oficina De SAT En Persona:">
+            <p>
+              Si la inscripción requiere asistencia presencial para empresas o ciudadanos extranjeros, solicite una cita en
+              la oficina de SAT más cercana.
+            </p>
+          </ContentCard>
+          <ContentCard title="Documentos Necesarios Para Procesar La RFC">
+            <p>
+              Para una <strong>persona física,</strong>Estos documentos son obligatorios.
+            </p>
+            <ul>
+              <li>Certificado original</li>
+              <li>Pasaporte válido.</li>
+              <li>Impresión de CURP</li>
+              <li>Comprobante de domicilio</li>
+              <li>Documento de identidad oficial con fotografía.</li>
+              <li>Los ciudadanos extranjeros necesitan documentos de inmigración.</li>
+            </ul>
+          </ContentCard>
+          <ContentCard title="Reciba Su RFC Y Certificado De Situación Fiscal">
+            <p>
+              Después <strong>inscripción al RFC</strong>, el SAT emite su certificación tributaria, un PDF de su RFC activo,
+              registrado <strong>régimen fiscal,</strong>y domicilio registrado. Puede que lo necesite para trabajos, bancos
+              o clientes.
+            </p>
+          </ContentCard>
+        </ContentCardsGrid>
+      </ContentCardSection>
 
       <HomeContentSection
         id="quien-necesita-rfc"

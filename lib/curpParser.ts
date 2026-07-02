@@ -7,7 +7,7 @@ const normalizeCurp = (value: string): string =>
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 
-export type CurpParseResult = {
+type CurpParseResult = {
   valid: boolean;
   normalized: string;
   rfcBase: string;

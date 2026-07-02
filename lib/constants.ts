@@ -1,5 +1,3 @@
-export const PRIMARY_KEYWORD = "RFC Generator Mexico";
-
 export const PARTICLES = new Set([
   "DE",
   "LA",

@@ -7,7 +7,7 @@ import {
   PARTICLES,
 } from "./constants";
 
-export type RfcInput = {
+type RfcInput = {
   apellidoPaterno: string;
   apellidoMaterno?: string;
   nombre: string;
